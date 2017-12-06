@@ -51,5 +51,4 @@ module.exports = {
   show: usersShow,
   delete: usersDelete,
   update: usersUpdate
-
 };

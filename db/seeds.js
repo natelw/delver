@@ -1,23 +1,10 @@
 const mongoose   = require('mongoose');
-mongoose.Promise = require('bluebird');
-// const Axios = require('axios');
-// const Spell = require('../models/Spell');
+const Promise = require('bluebird');
+mongoose.Promise = Promise;
+const rp = require('request-promise');
+const Spell = require('../models/Spell');
 const User = require('../models/User');
 const { dbURI } = require('../config/environment');
-
-//
-//
-//
-// let SpellBook = {};
-//
-// function getSpells(req, res, next){
-//   Axios
-//     .get('http://www.dnd5eapi.co/api/spells/1')
-//     .then(spell => SpellBook = spell.data.json())
-//     .catch(next);
-//
-// }
-
 
 const userData = [{
   username: 'nate',
@@ -37,11 +24,45 @@ const userData = [{
   passwordConfirmation: 'password'
 }];
 
-
-
 mongoose.connect(dbURI, { useMongoClient: true })
   .then(db => db.dropDatabase())
   .then(() => User.create(userData))
   .then(users => console.log(`${users.length} users created!`))
+  .then(() => getSpells())
+  .then(spells => console.log(`${spells.length} created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
+
+
+function getSpells() {
+  return rp({
+    url: 'http://www.dnd5eapi.co/api/spells',
+    method: 'GET',
+    json: true
+  })
+    .then(res => {
+      const spellRequests = res.results.map(result => rp({
+        method: 'GET',
+        url: result.url,
+        json: true
+      }));
+
+      return Promise.all(spellRequests);
+    })
+    .then(spellArray => {
+      return Spell.create(spellArray);
+    });
+}
+
+
+//
+//
+//
+// mongoose.connect(dbURI, { useMongoClient: true })
+//   .then(db => db.dropDatabase())
+//   .then(() => User.create(userData))
+//   .then(users => console.log(`${users.length} users created!`))
+//   .then(() => getSpells())
+//   .then(() => Spell.create(SpellBook))
+//   .catch(err => console.log(err))
+//   .finally(() => mongoose.connection.close());

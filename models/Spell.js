@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const spellSchema = new mongoose.Schema({
+
   index: Number,
   name: {type: String},
   desc: [String],
@@ -21,8 +22,7 @@ const spellSchema = new mongoose.Schema({
   classes:
    [
      {
-       name: String,
-       url: String
+       name: String
      }
    ],
   subclasses:
@@ -36,6 +36,7 @@ const spellSchema = new mongoose.Schema({
     }
   ],
   url: String
+
 });
 
 module.exports = mongoose.model('Spell', spellSchema);
