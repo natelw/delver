@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({
 
-  
+
   index: {type: Number},
   name: {type: String},
   level: Number,
@@ -12,8 +12,6 @@ const featureSchema = new mongoose.Schema({
     url: String,
     name: String
   }
-}
-
-);
+});
 
 module.exports = mongoose.model('Feature', featureSchema);

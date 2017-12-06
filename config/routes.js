@@ -3,6 +3,7 @@ const router = require('express').Router();
 const users = require('../controllers/users');
 const spells = require('../controllers/spells');
 const features = require('../controllers/features');
+const monsters = require('../controllers/monsters');
 
 router.route('/users')
   .get(users.index)
@@ -10,15 +11,17 @@ router.route('/users')
 
 router.route('/spells')
   .get(spells.index);
-
 router.route('/features')
   .get(features.index);
+router.route('/monsters')
+  .get(monsters.index);
 
 router.route('/spells/:id')
   .get(spells.show);
-
 router.route('/features/:id')
   .get(features.show);
+router.route('/monsters/:id')
+  .get(monsters.show);
 
 
 

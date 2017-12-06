@@ -3,6 +3,7 @@ const Promise = require('bluebird');
 mongoose.Promise = Promise;
 const rp = require('request-promise');
 const Spell = require('../models/Spell');
+const Monster = require('../models/Monster');
 const Feature = require('../models/Feature');
 const User = require('../models/User');
 const { dbURI } = require('../config/environment');
@@ -31,11 +32,13 @@ mongoose.connect(dbURI, { useMongoClient: true })
   .then(users => console.log(`${users.length} users created!`))
   // .then(() => getSpells())
   // .then(spells => console.log(`${spells.length} created!`))
-  .then(() => getFeatures())
-  .then(features => console.log(`${features.length} created!`))
+  // .then(() => getFeatures())
+  // .then(features => console.log(`${features.length} created!`))
+  .then(() => getMonsters())
+  .then(monsters => console.log(`${monsters.length} created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
-// 
+//
 //
 // function getSpells() {
 //   return rp({
@@ -57,23 +60,43 @@ mongoose.connect(dbURI, { useMongoClient: true })
 //     });
 // }
 
+//
+// function getFeatures() {
+//   return rp({
+//     url: 'http://www.dnd5eapi.co/api/features',
+//     method: 'GET',
+//     json: true
+//   })
+//     .then(res => {
+//       const featureRequests = res.results.map(result => rp({
+//         method: 'GET',
+//         url: result.url,
+//         json: true
+//       }));
+//
+//       return Promise.all(featureRequests);
+//     })
+//     .then(featureArray => {
+//       return Feature.create(featureArray);
+//     });
+// }
 
-function getFeatures() {
+function getMonsters() {
   return rp({
-    url: 'http://www.dnd5eapi.co/api/features',
+    url: 'http://www.dnd5eapi.co/api/monsters',
     method: 'GET',
     json: true
   })
     .then(res => {
-      const featureRequests = res.results.map(result => rp({
+      const monsterRequests = res.results.map(result => rp({
         method: 'GET',
         url: result.url,
         json: true
       }));
 
-      return Promise.all(featureRequests);
+      return Promise.all(monsterRequests);
     })
-    .then(featureArray => {
-      return Feature.create(featureArray);
+    .then(monsterArray => {
+      return Monster.create(monsterArray);
     });
 }
