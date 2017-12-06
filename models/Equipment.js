@@ -25,13 +25,38 @@ const equipmentSchema = new mongoose.Schema({
     long: Number
   },
   weight: Number,
-  // properties: [
-  //   String,
-  //   {
-  //     name: String,
-  //     url: String
-  //   }],
-  url: String
+  properties: [{
+    name: String,
+    url: String
+  }],
+  url: String,
+  armor_category: {
+    url: String,
+    name: String
+  },
+  armor_class: {
+    base: Number,
+    dex_bonus: Boolean,
+    max_bonus: Number
+  },
+  str_minimum: Number,
+  stealth_disadvantage: Boolean,
+  desc: [String],
+  tool_category: String,
+  vehicle_category: String,
+  speed: {
+    quantity: String,
+    unit: String
+  },
+  capacity: String
+
 });
+
+
+
+
+
+
+
 
 module.exports = mongoose.model('Equipment', equipmentSchema);

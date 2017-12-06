@@ -142,6 +142,29 @@ function getEquipments() {
       return Promise.all(equipmentRequests);
     })
     .then(equipmentArray => {
-      return Equipment.create(equipmentArray);
+      // Normalize data for entry into MongoDB
+      equipmentArray = equipmentArray.map(equipmentData => {
+        equipmentData.properties = equipmentData.properties ? equipmentData.properties.map(property => {
+          if(typeof property === 'string') return { name: property };
+          return property;
+        }) : [];
+
+        if(equipmentData['weapon_category:']) {
+          equipmentData.weapon_category = equipmentData['weapon_category:'];
+          delete equipmentData['weapon_category:'];
+        }
+
+        if(equipmentData.damage &&
+          equipmentData.damage.damage_type &&
+          equipmentData.damage.damage_type.name &&
+          equipmentData.damage.damage_type.name.name) {
+          equipmentData.damage.damage_type.name = equipmentData.damage.damage_type.name.name;
+        }
+
+        return equipmentData;
+      });
+
+      return Equipment
+        .create(equipmentArray);
     });
 }
