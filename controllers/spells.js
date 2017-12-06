@@ -8,6 +8,16 @@ function spellsIndex(req, res, next){
     .catch(next);
 }
 
+
+function spellsShow(req, res, next){
+  Spell
+    .findById(req.params.id)
+    .exec()
+    .then(spell => res.status(200).json(spell))
+    .catch(next);
+}
+
 module.exports = {
-  index: spellsIndex
+  index: spellsIndex,
+  show: spellsShow
 };

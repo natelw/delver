@@ -53,16 +53,3 @@ function getSpells() {
       return Spell.create(spellArray);
     });
 }
-
-
-//
-//
-//
-// mongoose.connect(dbURI, { useMongoClient: true })
-//   .then(db => db.dropDatabase())
-//   .then(() => User.create(userData))
-//   .then(users => console.log(`${users.length} users created!`))
-//   .then(() => getSpells())
-//   .then(() => Spell.create(SpellBook))
-//   .catch(err => console.log(err))
-//   .finally(() => mongoose.connection.close());

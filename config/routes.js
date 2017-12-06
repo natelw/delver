@@ -10,6 +10,9 @@ router.route('/users')
 router.route('/spells')
   .get(spells.index);
 
+router.route('/spells/:id')
+  .get(spells.show);
+
 
 router.route('/users/:id')
   .get(users.show)
