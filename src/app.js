@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import Routes from './components/utilities/Routes';
 
+import './scss/style.scss';
+
+
 class App extends React.Component {
 
   render() {

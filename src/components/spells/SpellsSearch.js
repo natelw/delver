@@ -18,12 +18,14 @@ class SpellsSearch extends React.Component {
     return(
       <section>
         <h1>All Spells</h1>
-        {this.state.spells && this.state.spells.map(spell => {
-          return(
-            <div key={spell.index} className="spell-single"><p>{spell.name}</p></div>
-          );
-        })
-        }
+        <div className="search-container">
+          {this.state.spells && this.state.spells.map(spell => {
+            return(
+              <div key={spell.index} className="spell-single"><div className="single-text">{spell.name}</div></div>
+            );
+          })
+          }
+        </div>
       </section>
     );
   }
