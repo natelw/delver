@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import BigSearch from '../spells/BigSearch';
+import BigSearch from '../searcher/BigSearch';
 
 
 

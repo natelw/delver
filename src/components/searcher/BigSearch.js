@@ -1,13 +1,39 @@
 import React from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
+import SearchBar from './SearchBar';
+import _ from 'lodash';
+import Spellbox from './Spellbox';
 
 class BigSearch extends React.Component {
   state = {
     spells: [],
     proficiencies: [],
-    equipments: []
+    equipments: [],
+    sortBy: 'name',
+    sortDirection: 'asc',
+    query: '',
+    classQuery:'',
+    sortClassBy: ''
+  };
+
+
+
+  handleSort = (e) => {
+    const [sortBy, sortDirection] = e.target.value.split('|');
+    this.setState({ sortBy, sortDirection });
+
   }
+
+  handleSearch = (e) => {
+    this.setState({query: e.target.value});
+  }
+
+  handleClassSort = (e) => {
+    this.setState({classQuery: e.target.value});
+    console.log(e.target.value);
+  }
+
 
   componentWillMount(){
     Axios
@@ -27,17 +53,24 @@ class BigSearch extends React.Component {
   }
 
   render(){
+    const { sortBy, sortDirection, query } = this.state;
+    const regex = new RegExp(query, 'i');
+
+    const orderedSpells = _.orderBy(this.state.spells, [sortBy],[sortDirection]);
+    const spells = _.filter(orderedSpells, (spell) => {
+      return regex.test(spell.name);
+    });
     return(
       <section>
         <h1>All Spells</h1>
+
+        <SearchBar
+          handleSort={this.handleSort}
+          handleSearch={this.handleSearch}
+          handleClassSort={this.handleClassSort}
+        />
         <div className="search-container">
-          {this.state.spells && this.state.spells.map(spell => {
-            return(
-              <div key={spell.index} className="databox-single"><div className="single-text">{spell.name}</div>
-                <div className="single-level">{spell.level}</div></div>
-            );
-          })
-          }
+          {spells.map(spell => <Spellbox key={spell.index} {...spell} />)}
         </div>
 
 
