@@ -13,7 +13,7 @@ class BigSearch extends React.Component {
     sortBy: 'name',
     sortDirection: 'asc',
     query: '',
-    classQuery:'',
+    classQuery: '',
     sortClassBy: ''
   };
 
@@ -52,14 +52,26 @@ class BigSearch extends React.Component {
       .catch(err => console.log(err));
   }
 
-  render(){
-    const { sortBy, sortDirection, query } = this.state;
+  searchSorter(){
+    const { sortBy, sortDirection, query, classQuery } = this.state;
     const regex = new RegExp(query, 'i');
+    const classRegex = new RegExp(classQuery, 'i');
+
+
 
     const orderedSpells = _.orderBy(this.state.spells, [sortBy],[sortDirection]);
-    const spells = _.filter(orderedSpells, (spell) => {
+    const classedSpells = _.filter(orderedSpells, (spell) =>{
+      return classRegex.test(spell.classes[0].name);
+    });
+    const spells = _.filter(classedSpells, (spell) => {
       return regex.test(spell.name);
     });
+    return spells;
+  }
+
+
+  render(){
+    const spells = this.searchSorter();
     return(
       <section>
         <h1>All Spells</h1>
@@ -71,27 +83,6 @@ class BigSearch extends React.Component {
         />
         <div className="search-container">
           {spells.map(spell => <Spellbox key={spell.index} {...spell} />)}
-        </div>
-
-
-        <div className="search-container">
-          {this.state.proficiencies && this.state.proficiencies.map(proficiency => {
-            return(
-              <div key={proficiency.index} className="databox-single"><div className="single-text">{proficiency.name}</div>
-                <div className="single-level"></div></div>
-            );
-          })
-          }
-        </div>
-
-        <div className="search-container">
-          {this.state.equipments && this.state.equipments.map(equipments => {
-            return(
-              <div key={equipments.index} className="databox-single"><div className="single-text">{equipments.name}</div>
-                <div className="single-level"></div></div>
-            );
-          })
-          }
         </div>
       </section>
     );

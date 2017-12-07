@@ -18,12 +18,12 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
           >
             <ToggleButton value="All" >All Classes</ToggleButton>
             <ToggleButton value="Bard" onChange={handleClassSort}>Bard</ToggleButton>
-            <ToggleButton value="Druid">Druid</ToggleButton>
-            <ToggleButton value="Paladin">Paladin</ToggleButton>
-            <ToggleButton value="Ranger">Ranger</ToggleButton>
-            <ToggleButton value="Sorcerer">Sorcerer</ToggleButton>
-            <ToggleButton value="Warlock">Warlock</ToggleButton>
-            <ToggleButton value="Wizard">Wizard</ToggleButton>
+            <ToggleButton value="Druid" onChange={handleClassSort}>Druid</ToggleButton>
+            <ToggleButton value="Paladin" onChange={handleClassSort}>Paladin</ToggleButton>
+            <ToggleButton value="Ranger" onChange={handleClassSort}>Ranger</ToggleButton>
+            <ToggleButton value="Sorcerer" onChange={handleClassSort}>Sorcerer</ToggleButton>
+            <ToggleButton value="Warlock" onChange={handleClassSort}>Warlock</ToggleButton>
+            <ToggleButton value="Wizard" onChange={handleClassSort}>Wizard</ToggleButton>
           </ToggleButtonGroup>
         </FormGroup>
       </Col>
