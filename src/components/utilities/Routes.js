@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import SpellsSearch from '../spells/SpellsSearch';
+import BigSearch from '../spells/BigSearch';
 
 
 
@@ -9,8 +9,8 @@ const Routes = () => {
   return (
     <Switch>
 
-      <Route exact path="/spells" component={SpellsSearch} />
-      <Route path="/" component={SpellsSearch} />
+      <Route exact path="/spells" component={BigSearch} />
+      <Route path="/" component={BigSearch} />
     </Switch>
   );
 };

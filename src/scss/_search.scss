@@ -3,20 +3,31 @@ width: 350px;
 height: 500px;
 overflow-y: scroll;
 border: 2px solid black;
+display: inline-block;
 }
 
 
 
-.spell-single {
+.databox-single {
 border: 2px solid black;
 width: 300px;
 height: 30px;
 margin: 2px 12px 2px 12px;
 
 .single-text {
-font-family: Helvetica, sans-serif;
+font-family: $primary-font;
 padding: 5px;
-}
+width: 250px;
+position: relative;
+display: inline-block;
+  }
 
+.single-level {
+margin: 2px;
+position: relative;
+display: inline-block;
+font-family: $primary-font;
+
+}
 
 }
