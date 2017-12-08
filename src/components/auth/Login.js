@@ -1,6 +1,7 @@
 import React     from 'react';
-import LogForm from './LogForm';
 import Axios     from 'axios';
+
+import LogForm from './LogForm';
 import Auth from '../../lib/Auth';
 
 class Login extends React.Component {

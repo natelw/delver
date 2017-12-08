@@ -8,7 +8,7 @@ class SheetsShow extends React.Component {
     sheet: {}
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios
       .get(`/api/sheets/${this.props.match.params.id}`)
       .then(res => this.setState({ sheet: res.data }))
@@ -34,8 +34,8 @@ class SheetsShow extends React.Component {
         <h3>{this.state.sheet.level}</h3>
         <h3>{this.state.sheet.race}</h3>
 
-        { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCard}>DELETE</button>}
-        { Auth.isAuthenticated() && <Link to={`/cards/${this.state.card.id}/edit`} className="edit-button"><button>Edit</button>
+        { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteSheet}>DELETE</button>}
+        { Auth.isAuthenticated() && <Link to={`/sheets/${this.state.sheet.id}/edit`} className="edit-button"><button>Edit</button>
         </Link>}
 
       </main>
