@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Auth from '../../lib/Auth';
-import {Navbar, Nav} from 'react-bootstrap';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 const NavBar = ({history}) => {
 
@@ -9,22 +9,17 @@ const NavBar = ({history}) => {
     e.preventDefault();
 
     Auth.removeToken();
-    history.push('/');
+    history.push('/login');
   }
 
 
   return(
     <Navbar>
       <Nav>
-        <div className="navbar-main">
-          { !Auth.isAuthenticated() && <Link to="/login" className="nav-button">Login</Link>}
-          {' '}
-          { !Auth.isAuthenticated() && <Link to="/register" className="nav-button">Register</Link>}
-          {' '}
-          { Auth.isAuthenticated() && <Link to="/spells" className="nav-button">Search</Link>}
-          {' '}
-          { Auth.isAuthenticated() && <a href="#" className="nav-button" onClick={logout}>Logout</a>}
-        </div>
+        { !Auth.isAuthenticated() && <NavItem componentClass={Link} href="/login" to="/login" active={location.pathname === '/login'}>Login</NavItem>}
+        { !Auth.isAuthenticated() && <NavItem componentClass={Link} href="/register" to="/register" active={location.pathname === '/register'}>Register</NavItem>}
+        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/spells" to="/spells" active={location.pathname === '/spells'}>Search</NavItem>}
+        { Auth.isAuthenticated() && <NavItem href="#" className="nav-button" onClick={logout}>Logout</NavItem>}
       </Nav>
     </Navbar>
   );

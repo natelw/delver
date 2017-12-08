@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
+import Home from '../Home';
 import BigSearch from '../searcher/BigSearch';
 import SheetsIndex from '../sheets/SheetsIndex';
 import SheetsShow from '../sheets/SheetsShow';
@@ -18,7 +19,7 @@ const Routes = () => {
       <Route exact path="/sheets" component={SheetsIndex} />
       <Route exact path="/sheets/new" component={SheetsNew} />
       <Route path = "/sheets/:id" component={SheetsShow} />
-      <Route path="/" component={BigSearch} />
+      <Route path="/" component={Home} />
     </Switch>
   );
 };
