@@ -7,6 +7,12 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
     <Row>
       <Col md={6}>
         <FormGroup>
+          <FormControl type="text" placeholder="Search" onChange={handleSearch}/>
+        </FormGroup>
+      </Col>
+
+      <Col md={12}>
+        <FormGroup>
           <FormControl componentClass="select" onChange={handleSort}>
             <option value="name|asc">Name (A - Z)</option>
             <option value="name|desc">Name (Z - A)</option>
@@ -14,7 +20,9 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
             <option value="level|desc">Spell Level (High - Low)</option>
           </FormControl>
           <ToggleButtonGroup
-            type="checkbox"
+            type="radio"
+            name="charclassoptions"
+            className="class-toggles"
           >
             <ToggleButton value="All" >All Classes</ToggleButton>
             <ToggleButton value="Bard" onChange={handleClassSort}>Bard</ToggleButton>
@@ -24,14 +32,12 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
             <ToggleButton value="Sorcerer" onChange={handleClassSort}>Sorcerer</ToggleButton>
             <ToggleButton value="Warlock" onChange={handleClassSort}>Warlock</ToggleButton>
             <ToggleButton value="Wizard" onChange={handleClassSort}>Wizard</ToggleButton>
+            <ToggleButton value="Monk" onChange={handleClassSort}>Monk</ToggleButton>
+
           </ToggleButtonGroup>
         </FormGroup>
       </Col>
-      <Col md={6}>
-        <FormGroup>
-          <FormControl type="text" placeholder="Search" onChange={handleSearch}/>
-        </FormGroup>
-      </Col>
+
     </Row>
   );
 };

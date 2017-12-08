@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import {BrowserRouter} from 'react-router-dom';
 import Routes from './components/utilities/Routes';
-
+import NavBar from './components/navigation/NavBar';
 import './scss/style.scss';
 
 
@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <main>
-          <h1>Dungeons and Dragons</h1>
+          <NavBar/>
           <Routes/>
         </main>
       </BrowserRouter>

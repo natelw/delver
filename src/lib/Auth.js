@@ -1,28 +1,27 @@
 class Auth {
-  static setToken(token) {
-    return localStorage.setItem('token', token);
+
+  static setToken(token){
+    return localStorage.setItem('token',token);
   }
 
-  static getToken() {
+  static getToken(){
     return localStorage.getItem('token');
   }
 
-  static isAuthenticated() {
-    const payload = this.getPayload();
-    if(!payload) return false;
-    const now = (new Date()).getTime() / 1000;
-    return payload.exp > now;
+  static isAuthenticated(){
+    return !!this.getToken();
   }
 
-  static logout() {
-    localStorage.removeItem('token');
+  static removeToken() {
+    return localStorage.removeItem('token');
   }
-
-  static getPayload() {
+  static getPayLoad() {
     const token = this.getToken();
     if(!token) return null;
     return JSON.parse(atob(token.split('.')[1]));
   }
+
+
 }
 
 export default Auth;

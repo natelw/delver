@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Spellbox = ({ name, level }) => {
+const Spellbox = ({ name, level, id }) => {
   return (
 
     <div className="databox-single"><div className="single-text">{name}</div>

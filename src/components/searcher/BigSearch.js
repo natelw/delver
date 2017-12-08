@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 import SearchBar from './SearchBar';
 import _ from 'lodash';
 import Spellbox from './Spellbox';
-
+import NavBar from '../navigation/NavBar';
+import SpellSheet from './SpellSheet';
 class BigSearch extends React.Component {
   state = {
     spells: [],
@@ -56,9 +57,6 @@ class BigSearch extends React.Component {
     const { sortBy, sortDirection, query, classQuery } = this.state;
     const regex = new RegExp(query, 'i');
     const classRegex = new RegExp(classQuery, 'i');
-
-
-
     const orderedSpells = _.orderBy(this.state.spells, [sortBy],[sortDirection]);
     const classedSpells = _.filter(orderedSpells, (spell) =>{
       return classRegex.test(spell.classes[0].name);
@@ -74,16 +72,20 @@ class BigSearch extends React.Component {
     const spells = this.searchSorter();
     return(
       <section>
-        <h1>All Spells</h1>
-
-        <SearchBar
-          handleSort={this.handleSort}
-          handleSearch={this.handleSearch}
-          handleClassSort={this.handleClassSort}
-        />
-        <div className="search-container">
-          {spells.map(spell => <Spellbox key={spell.index} {...spell} />)}
+        <h3>All Spells</h3>
+        <div className="search-main-box">
+          <SearchBar
+            handleSort={this.handleSort}
+            handleSearch={this.handleSearch}
+            handleClassSort={this.handleClassSort}
+          />
+          <div className="search-container">
+            {spells.map(spell => <Spellbox key={spell.index} {...spell} />)}
+          </div>
         </div>
+        {/* <div className="spell-sheet-viewer">
+          {spells.map(spell => <SpellSheet key={spell.index} {...spell} />)}
+        </div> */}
       </section>
     );
   }

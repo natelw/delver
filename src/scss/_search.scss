@@ -31,3 +31,22 @@ font-family: $primary-font;
 }
 
 }
+
+.search-main-box {
+  width: 350px;
+  height:800px;
+  margin: 5px 20px 5px 20px;
+  float: left;
+}
+
+.spell-sheet-viewer {
+  width: 500px;
+  height: 600px;
+  overflow-y: scroll;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.spell-sheet {
+  padding: 10px;
+}

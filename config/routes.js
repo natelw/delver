@@ -8,6 +8,13 @@ const proficiencies = require('../controllers/proficiencies');
 const equipments = require('../controllers/equipments');
 const skills = require('../controllers/equipments');
 const sheets = require('../controllers/sheets');
+const auth  = require('../controllers/auth');
+
+router.route('/register')
+  .post(auth.register);
+
+router.route('/login')
+  .post(auth.login);
 
 router.route('/users')
   .get(users.index)
