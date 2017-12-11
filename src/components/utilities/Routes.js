@@ -16,13 +16,14 @@ import CampaignsIndex from '../campaigns/CampaignsIndex';
 import CampaignsNew from '../campaigns/CampaignsNew';
 import CampaignsShow from '../campaigns/CampaignsShow';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
-
+import EquipBigSearch from '../searcher/EquipBigSearch';
 const Routes = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route exact path="/spells" component={BigSearch} />
+      <Route exact path="/equipments" component={EquipBigSearch} />
       <Route exact path="/sheets" component={SheetsIndex} />
       <Route exact path="/sheets/new" component={SheetsNew} />
       <Route exact path ="/campaigns" component={CampaignsIndex} />

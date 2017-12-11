@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, FormGroup, FormControl, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 
-const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
+const EquipSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
 
   return(
     <Row>
@@ -22,7 +22,7 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
             name="equipmentoptions"
             className="equipment-toggles"
           >
-            <ToggleButton value="" >All Equipment</ToggleButton>
+            <ToggleButton value="" onChange={handleClassSort}>All Equipment</ToggleButton>
             <ToggleButton value="Weapon" onChange={handleClassSort}>Weapon</ToggleButton>
             <ToggleButton value="Armor" onChange={handleClassSort}>Armor</ToggleButton>
             <ToggleButton value="Adventuring Gear" onChange={handleClassSort}>Adventuring Gear</ToggleButton>
@@ -37,4 +37,4 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
   );
 };
 
-export default SearchBar;
+export default EquipSearchBar;
