@@ -8,12 +8,17 @@ import MonsterSearchBar from './MonsterSearchBar';
 class MonsterBigSearch extends React.Component {
   state = {
     monsters: [],
+    monster: {},
+    monsterID: '',
     sortBy: 'name',
     sortDirection: 'asc',
-    query: ''
+    query: '',
+    isHidden: 'none'
   };
 
-
+handleClick = () => {
+  this.setState({isHidden: 'none'});
+}
 
   handleSort = (e) => {
     const [sortBy, sortDirection] = e.target.value.split('|');
@@ -52,6 +57,12 @@ class MonsterBigSearch extends React.Component {
     return monsters;
   }
 
+  monsterViewer(monsterId){
+    Axios
+      .get(`/api/monsters/${monsterId}`)
+      .then(res => this.setState({monster: res.data,isHidden: null}))
+      .catch(err => console.log(err));
+  }
 
 
   render(){
@@ -65,13 +76,20 @@ class MonsterBigSearch extends React.Component {
             handleSearch={this.handleSearch}
             handleClassSort={this.handleClassSort}
           />
-
           <div className="search-container">
-            {monsters.map(monster => <Link key={monster.id} to={`/equipments/${monster.id}`}><MonsterBox {...monster} /></Link>)}
+            {monsters.map(monster =>
+              <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.monsterViewer.bind(this, monster.id)}>
+                <MonsterBox {...monster} /></a>
+            )}
+
+
+
           </div>
         </div>
 
-        <div className="equip-sheet-viewer">
+        <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
+          <a href="#" onClick={this.handleClick}>X</a>
+          <h1>{this.state.monster.name}</h1>
         </div>
       </section>
     );

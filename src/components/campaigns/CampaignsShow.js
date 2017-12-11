@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import Auth from '../../lib/Auth';
+import LeftSearchPopOut from '../searcher/LeftSearchPopOut';
 
 class CampaignsShow extends React.Component {
   state = {
@@ -27,15 +28,12 @@ class CampaignsShow extends React.Component {
   render(){
     return(
       <main>
-        <h1>Campaign Show</h1>
 
         <h1>{this.state.campaign.name} </h1>
-
-
         { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCampaign}>DELETE</button>}
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
-
+        <LeftSearchPopOut/>
       </main>
     );
   }

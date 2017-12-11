@@ -50,3 +50,11 @@ font-family: $primary-font;
 .spell-sheet {
   padding: 10px;
 }
+
+.sheet-viewer {
+  width: 500px;
+  height: 600px;
+  overflow-y: scroll;
+  display: inline-block;
+  border: 2px solid black;
+}
