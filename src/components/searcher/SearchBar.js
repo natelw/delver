@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, FormGroup, FormControl, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 
-const SearchBar = ({ handleSort, handleSearch, handleClassSort, handleClassReset }) => {
+const SearchBar = ({ handleSort, handleSearch, handleClassSort}) => {
 
   return(
     <Row>
