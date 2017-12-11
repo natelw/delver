@@ -27,7 +27,6 @@ class EquipBigSearch extends React.Component {
 
   handleClassSort = (e) => {
     this.setState({classQuery: e.target.value});
-    console.log(e.target.value);
   }
 
 

@@ -17,6 +17,9 @@ import CampaignsNew from '../campaigns/CampaignsNew';
 import CampaignsShow from '../campaigns/CampaignsShow';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
 import EquipBigSearch from '../searcher/EquipBigSearch';
+import FeaturesBigSearch from '../searcher/FeaturesBigSearch';
+
+
 const Routes = () => {
   return (
     <Switch>
@@ -28,6 +31,7 @@ const Routes = () => {
       <Route exact path="/sheets/new" component={SheetsNew} />
       <Route exact path ="/campaigns" component={CampaignsIndex} />
       <Route exact path ="/campaigns/new" component={CampaignsNew} />
+      <Route exact path ="/features" component={FeaturesBigSearch} />
       <Route path="/users/:id/edit" component={UsersEdit} />
       <Route path="/users/:id" component={UsersShow} />
       <Route path="/sheets/:id/edit" component={SheetsEdit} />
