@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, FormGroup, FormControl, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 
-const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
+const SearchBar = ({ handleSort, handleSearch, handleClassSort, handleClassReset }) => {
 
   return(
     <Row>
@@ -24,7 +24,7 @@ const SearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
             name="charclassoptions"
             className="class-toggles"
           >
-            <ToggleButton value="All" >All Classes</ToggleButton>
+            <ToggleButton value="" onChange={handleClassSort}>All Classes</ToggleButton>
             <ToggleButton value="Bard" onChange={handleClassSort}>Bard</ToggleButton>
             <ToggleButton value="Druid" onChange={handleClassSort}>Druid</ToggleButton>
             <ToggleButton value="Paladin" onChange={handleClassSort}>Paladin</ToggleButton>

@@ -15,7 +15,8 @@ class BigSearch extends React.Component {
     sortDirection: 'asc',
     query: '',
     classQuery: '',
-    sortClassBy: ''
+    sortClassBy: '',
+    spell: {}
   };
 
 
@@ -34,6 +35,7 @@ class BigSearch extends React.Component {
     this.setState({classQuery: e.target.value});
     console.log(e.target.value);
   }
+
 
 
   componentWillMount(){
@@ -67,6 +69,9 @@ class BigSearch extends React.Component {
     return spells;
   }
 
+spellTrigger(spellId){
+    console.log(spellId);
+  };
 
   render(){
     const spells = this.searchSorter();
@@ -79,13 +84,16 @@ class BigSearch extends React.Component {
             handleSearch={this.handleSearch}
             handleClassSort={this.handleClassSort}
           />
+
           <div className="search-container">
-            {spells.map(spell => <Spellbox key={spell.index} {...spell} />)}
+            {spells.map(spell => <Link key={spell.index} onClick={this.spellTrigger} to={`/spells/${spell.id}`}><Spellbox {...spell} /></Link>)}
           </div>
         </div>
         {/* <div className="spell-sheet-viewer">
           {spells.map(spell => <SpellSheet key={spell.index} {...spell} />)}
         </div> */}
+        <div className="spell-sheet-viewer">
+        </div>
       </section>
     );
   }

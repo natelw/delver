@@ -9,6 +9,7 @@ const equipments = require('../controllers/equipments');
 const skills = require('../controllers/equipments');
 const sheets = require('../controllers/sheets');
 const auth  = require('../controllers/auth');
+const campaigns = require('../controllers/campaigns');
 
 router.route('/register')
   .post(auth.register);
@@ -23,6 +24,10 @@ router.route('/users')
 router.route('/sheets')
   .get(sheets.index)
   .post(sheets.create);
+
+router.route('/campaigns')
+  .get(campaigns.index)
+  .post(campaigns.create);
 
 router.route('/spells')
   .get(spells.index);
@@ -41,6 +46,11 @@ router.route('/sheets/:id')
   .get(sheets.show)
   .delete(sheets.delete)
   .put(sheets.update);
+
+router.route('/campaigns/:id')
+  .get(campaigns.show)
+  .delete(campaigns.delete)
+  .put(campaigns.update);
 
 router.route('/spells/:id')
   .get(spells.show);
