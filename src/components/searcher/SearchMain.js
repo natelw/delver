@@ -91,8 +91,15 @@ class SearchMain extends React.Component {
 
     return(
       <section>
-        {this.props.searchState === 'monster' &&
         <Col xs={4}>
+
+          <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
+          <button onClick={this.props.handleSearchChange.bind(this, 'spell')}>spells</button>
+          <button onClick={this.props.handleSearchChange.bind(this, 'feature')}>features</button>
+          <button onClick={this.props.handleSearchChange.bind(this, 'equipment')}>equipment</button>
+
+
+          {this.props.searchState === 'monster' &&
           <div className="search-main-box">
             <MonsterSearchBar
               handleSort={this.handleSort}
@@ -106,8 +113,7 @@ class SearchMain extends React.Component {
               )}
             </div>
           </div>
-        </Col>
-        }{this.props.searchState === 'spell' &&
+          }{this.props.searchState === 'spell' &&
         <div className="search-main-box">
           <SearchBar
             handleSort={this.handleSort}
@@ -124,6 +130,8 @@ class SearchMain extends React.Component {
             )}
           </div>
         </div>}
+        </Col>
+
       </section>
     );
   }

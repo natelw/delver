@@ -24,7 +24,9 @@ class MainControl extends React.Component {
 
   };
 
-
+  handleSearchChange = (changeTo) => {
+    this.setState({searchState: changeTo});
+  }
 
   handleSort = (e) => {
     const [sortBy, sortDirection] = e.target.value.split('|');
@@ -76,13 +78,18 @@ class MainControl extends React.Component {
     render(){
       return(
         <section>
-          <SearchMain handleSearchClick={this.handleSearchClick} searchState={this.state.searchState}/>
+          <SearchMain
+            handleSearchClick={this.handleSearchClick}
+            searchState={this.state.searchState}
+            handleSearchChange={this.handleSearchChange}
+          />
           <MiddleViewer
             handleExitClick={this.handleExitClick}
             monster={this.state.monster}
             spell={this.state.spell}
             isHidden={this.state.isHidden}
             handleAddMonsterClick={this.handleAddMonsterClick}
+            searchState={this.state.searchState}
           />
           <RightSidePopOut
             monsterArr={this.state.monsterArr}

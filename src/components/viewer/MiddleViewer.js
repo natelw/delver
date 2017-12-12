@@ -9,11 +9,19 @@ const MiddleViewer = ({ handleExitClick, monster, isHidden, handleAddMonsterClic
       <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
         <a href="#" onClick={handleExitClick}>X</a>
         <a href="#" onClick={handleAddMonsterClick}>Add</a>
-        {searchState === 'monster' &&
-        <MonsterShow monster={monster}/>}
+        <h1>{searchState}</h1>
+        {
+          searchState === 'monster'
+            ? <MonsterShow monster={monster}/>
+            : null
+        }
 
-        {searchState === 'spell' &&
-          <p>{spell.name}</p>}
+        {
+          searchState === 'spell'
+            ? <SpellShow spell={spell}/>
+            : null
+        }
+
       </div>
     </Col>
   );
