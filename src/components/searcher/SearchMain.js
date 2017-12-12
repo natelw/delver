@@ -104,7 +104,7 @@ class SearchMain extends React.Component {
   render(){
     const monsters = this.SearchSorter();
     const spells = this.SearchSorter();
-
+    const features = this.SearchSorter();
     return(
       <section>
         <Col xs={4}>
@@ -151,7 +151,7 @@ class SearchMain extends React.Component {
                   handleClassSort={this.handleClassSort}
                 />
                 <div className="search-container">
-                  {this.state.features.map(feature =>
+                  {features.map(feature =>
                     <a className='feature-link' href='#' key={'feafea' + feature.id} data-id={feature.id}
                       onClick={this.props.handleSearchClick.bind(this, feature.id)}>
                       <FeatureBox {...feature} /></a>
