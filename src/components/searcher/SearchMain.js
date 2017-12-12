@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import {Link} from 'react-router-dom';
 import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
@@ -9,6 +8,8 @@ import SearchBar from '../searcher/SearchBar';
 import Spellbox from '../searcher/Spellbox';
 import FeaturesSearchBar from '../searcher/FeaturesSearchBar';
 import FeatureBox from '../searcher/FeatureBox';
+import EquipSearchBar from '../searcher/EquipSearchBar';
+import EquipBox from '../searcher/EquipBox';
 
 class SearchMain extends React.Component {
   state = {
@@ -21,7 +22,8 @@ class SearchMain extends React.Component {
     isHidden: 'none',
     monsterArr: [],
     spells: [],
-    features: []
+    features: [],
+    equipments: []
   };
 
 
@@ -61,6 +63,10 @@ class SearchMain extends React.Component {
       .get('/api/features')
       .then(res => this.setState({features: res.data}))
       .catch(err => console.log(err));
+    Axios
+      .get('/api/equipments')
+      .then(res => this.setState({equipments: res.data}))
+      .catch(err => console.log(err));
   }
 
   SearchSorter(){
@@ -96,6 +102,15 @@ class SearchMain extends React.Component {
         return regex.test(feature.name);
       });
       return features;
+    }else if(this.props.searchState === 'equipment'){
+      const orderedEquipments = _.orderBy(this.state.equipments, [sortBy],[sortDirection]);
+      const categoryEquips = _.filter(orderedEquipments, (equipment) =>{
+        return classRegex.test(equipment.equipment_category);
+      });
+      const equipments = _.filter(categoryEquips, (equipment) => {
+        return regex.test(equipment.name);
+      });
+      return equipments;
     }
 
   }
@@ -105,6 +120,7 @@ class SearchMain extends React.Component {
     const monsters = this.SearchSorter();
     const spells = this.SearchSorter();
     const features = this.SearchSorter();
+    const equipments = this.SearchSorter();
     return(
       <section>
         <Col xs={4}>
@@ -159,6 +175,21 @@ class SearchMain extends React.Component {
                 </div>
               </div>
 
+          }{this.props.searchState === 'equipment' &&
+              <div className="search-main-box">
+                <EquipSearchBar
+                  handleSort={this.handleSort}
+                  handleSearch={this.handleSearch}
+                  handleClassSort={this.handleClassSort}
+                />
+                <div className="search-container">
+                  {equipments.map(equipment =>
+                    <a className='feature-link' href='#' key={'equequ' + equipment.id} data-id={equipment.id}
+                      onClick={this.props.handleSearchClick.bind(this, equipment.id)}>
+                      <EquipBox {...equipment} /></a>
+                  )}
+                </div>
+              </div>
           }
         </Col>
       </section>

@@ -3,6 +3,7 @@ import {Col} from 'react-bootstrap';
 import MonsterShow from './MonsterShow';
 import SpellShow from './SpellShow';
 import FeatureShow from './FeatureShow';
+import EquipmentShow from './EquipmentShow';
 
 const MiddleViewer = ({
   handleExitClick,
@@ -11,7 +12,8 @@ const MiddleViewer = ({
   handleAddMonsterClick,
   spell,
   searchState,
-  feature
+  feature,
+  equipment
 }) => {
 
   return (
@@ -36,7 +38,11 @@ const MiddleViewer = ({
             ? <FeatureShow feature={feature}/>
             : null
         }
-
+        {
+          searchState === 'equipment'
+            ? <EquipmentShow equipment={equipment}/>
+            : null
+        }
       </div>
     </Col>
   );

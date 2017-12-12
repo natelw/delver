@@ -18,7 +18,8 @@ class MainControl extends React.Component {
     players: [{name: 'jimmy', initiative: 5},{name: 'alice', initiative: 12}],
     spell: {name: 'NO SPELLS'},
     features: [],
-    feature: {name: 'NO FEATURES'}
+    feature: {name: 'NO FEATURES'},
+    equipment: {name: 'NO EQUIPMENT'}
 
   };
 
@@ -60,6 +61,11 @@ class MainControl extends React.Component {
         .get(`/api/features/${thingId}`)
         .then(res => this.setState({feature: res.data,isHidden: null}))
         .catch(err => console.log(err));
+    }else if(this.state.searchState === 'equipment'){
+      Axios
+        .get(`/api/equipments/${thingId}`)
+        .then(res => this.setState({equipment: res.data,isHidden: null}))
+        .catch(err => console.log(err));
     }
   }
 
@@ -93,6 +99,7 @@ class MainControl extends React.Component {
             handleAddMonsterClick={this.handleAddMonsterClick}
             searchState={this.state.searchState}
             feature={this.state.feature}
+            equipment={this.state.equipment}
           />
           <RightSidePopOut
             monsterArr={this.state.monsterArr}

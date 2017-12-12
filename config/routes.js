@@ -60,7 +60,7 @@ router.route('/monsters/:id')
   .get(monsters.show);
 router.route('/proficiencies/:id')
   .get(proficiencies.index);
-router.route('/equipments.index')
+router.route('/equipments/:id')
   .get(equipments.show);
 router.route('/skills/:id');
 
