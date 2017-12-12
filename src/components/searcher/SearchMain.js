@@ -5,6 +5,8 @@ import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
 import {Col} from 'react-bootstrap';
+import SearchBar from '../searcher/SearchBar';
+import Spellbox from '../searcher/Spellbox';
 
 class SearchMain extends React.Component {
   state = {
@@ -15,7 +17,8 @@ class SearchMain extends React.Component {
     sortDirection: 'asc',
     query: '',
     isHidden: 'none',
-    monsterArr: []
+    monsterArr: [],
+    spells: []
   };
 
 
@@ -45,37 +48,51 @@ class SearchMain extends React.Component {
       .get('/api/monsters')
       .then(res => this.setState({monsters: res.data}))
       .catch(err => console.log(err));
-  }
 
-  MonsterSearchSorter(){
-    const { sortBy, sortDirection, query, classQuery } = this.state;
-    const regex = new RegExp(query, 'i');
-    const classRegex = new RegExp(classQuery, 'i');
-    const orderedMonsters = _.orderBy(this.state.monsters, [sortBy],[sortDirection]);
-    const categoryMonsters = _.filter(orderedMonsters, (monster) =>{
-      return classRegex.test(monster.size);
-    });
-    const monsters = _.filter(categoryMonsters, (monster) => {
-      return regex.test(monster.name);
-    });
-    return monsters;
-  }
-
-  monsterViewer(monsterId){
     Axios
-      .get(`/api/monsters/${monsterId}`)
-      .then(res => this.setState({monster: res.data,isHidden: null}))
+      .get('/api/spells')
+      .then(res => this.setState({spells: res.data}))
       .catch(err => console.log(err));
   }
 
+  SearchSorter(){
+
+    const { sortBy, sortDirection, query, classQuery } = this.state;
+    const regex = new RegExp(query, 'i');
+    const classRegex = new RegExp(classQuery, 'i');
+
+    if(this.props.searchState === 'monster'){
+      const orderedMonsters = _.orderBy(this.state.monsters, [sortBy],[sortDirection]);
+      const categoryMonsters = _.filter(orderedMonsters, (monster) =>{
+        return classRegex.test(monster.size);
+      });
+      const monsters = _.filter(categoryMonsters, (monster) => {
+        return regex.test(monster.name);
+      });
+      return monsters;
+    }else if(this.props.searchState === 'spell'){
+      const orderedSpells = _.orderBy(this.state.spells, [sortBy],[sortDirection]);
+      const classedSpells = _.filter(orderedSpells, (spell) =>{
+        return classRegex.test(spell.classes[0].name);
+      });
+      const spells = _.filter(classedSpells, (spell) => {
+        return regex.test(spell.name);
+      });
+      return spells;
+    }
+  }
+
+
+
 
   render(){
-    const monsters = this.MonsterSearchSorter();
+    const monsters = this.SearchSorter();
+    const spells = this.SearchSorter();
+
     return(
       <section>
+        {this.props.searchState === 'monster' &&
         <Col xs={4}>
-
-          <h3>All Monsters</h3>
           <div className="search-main-box">
             <MonsterSearchBar
               handleSort={this.handleSort}
@@ -84,15 +101,29 @@ class SearchMain extends React.Component {
             />
             <div className="search-container">
               {monsters.map(monster =>
-                <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.props.handleSearchClick.bind(this, monster.id)}>
+                <a className='monster-link' href="#" key={'monmon' + monster.id} data-id={monster.id} onClick={this.props.handleSearchClick.bind(this, monster.id)}>
                   <MonsterBox {...monster} /></a>
               )}
-
-
-
             </div>
           </div>
         </Col>
+        }{this.props.searchState === 'spell' &&
+        <div className="search-main-box">
+          <SearchBar
+            handleSort={this.handleSort}
+            handleSearch={this.handleSearch}
+            handleClassSort={this.handleClassSort}
+          />
+
+          <div className="search-container">
+            {spells.map(spell =>
+
+
+              <a className='spell-link' href="#" key={'spespe' + spell.id} data-id={spell.id} onClick={this.props.handleSearchClick.bind(this, spell.id)}>
+                <Spellbox {...spell} /></a>
+            )}
+          </div>
+        </div>}
       </section>
     );
   }
