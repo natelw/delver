@@ -7,6 +7,8 @@ import MonsterSearchBar from './MonsterSearchBar';
 import {Col} from 'react-bootstrap';
 import SearchBar from '../searcher/SearchBar';
 import Spellbox from '../searcher/Spellbox';
+import FeaturesSearchBar from '../searcher/FeaturesSearchBar';
+import FeatureBox from '../searcher/FeatureBox';
 
 class SearchMain extends React.Component {
   state = {
@@ -18,7 +20,8 @@ class SearchMain extends React.Component {
     query: '',
     isHidden: 'none',
     monsterArr: [],
-    spells: []
+    spells: [],
+    features: []
   };
 
 
@@ -53,6 +56,11 @@ class SearchMain extends React.Component {
       .get('/api/spells')
       .then(res => this.setState({spells: res.data}))
       .catch(err => console.log(err));
+
+    Axios
+      .get('/api/features')
+      .then(res => this.setState({features: res.data}))
+      .catch(err => console.log(err));
   }
 
   SearchSorter(){
@@ -79,10 +87,18 @@ class SearchMain extends React.Component {
         return regex.test(spell.name);
       });
       return spells;
+    }else if(this.props.searchState === 'feature'){
+      const orderedFeatures = _.orderBy(this.state.features, [sortBy],[sortDirection]);
+      const categoryFeatures = _.filter(orderedFeatures, (feature) =>{
+        return classRegex.test(feature.class.name);
+      });
+      const features = _.filter(categoryFeatures, (feature) => {
+        return regex.test(feature.name);
+      });
+      return features;
     }
+
   }
-
-
 
 
   render(){
@@ -120,18 +136,31 @@ class SearchMain extends React.Component {
             handleSearch={this.handleSearch}
             handleClassSort={this.handleClassSort}
           />
-
           <div className="search-container">
             {spells.map(spell =>
-
-
               <a className='spell-link' href="#" key={'spespe' + spell.id} data-id={spell.id} onClick={this.props.handleSearchClick.bind(this, spell.id)}>
                 <Spellbox {...spell} /></a>
             )}
           </div>
-        </div>}
-        </Col>
+        </div>
+          }{this.props.searchState === 'feature' &&
+              <div className="search-main-box">
+                <FeaturesSearchBar
+                  handleSort={this.handleSort}
+                  handleSearch={this.handleSearch}
+                  handleClassSort={this.handleClassSort}
+                />
+                <div className="search-container">
+                  {this.state.features.map(feature =>
+                    <a className='feature-link' href='#' key={'feafea' + feature.id} data-id={feature.id}
+                      onClick={this.props.handleSearchClick.bind(this, feature.id)}>
+                      <FeatureBox {...feature} /></a>
+                  )}
+                </div>
+              </div>
 
+          }
+        </Col>
       </section>
     );
   }

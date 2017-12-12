@@ -1,12 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
-import {Link} from 'react-router-dom';
-import _ from 'lodash';
-import MonsterBox from '../searcher/MonsterBox';
 import SearchMain from '../searcher/SearchMain';
 import RightSidePopOut from '../viewer/RightSidePopOut';
 import MiddleViewer from '../viewer/MiddleViewer';
-import {Col} from 'react-bootstrap';
 
 class MainControl extends React.Component {
   state = {
@@ -20,7 +16,9 @@ class MainControl extends React.Component {
     monsterArr: [],
     searchState: 'spell',
     players: [{name: 'jimmy', initiative: 5},{name: 'alice', initiative: 12}],
-    spell: {}
+    spell: {name: 'NO SPELLS'},
+    features: [],
+    feature: {name: 'NO FEATURES'}
 
   };
 
@@ -56,7 +54,11 @@ class MainControl extends React.Component {
       Axios
         .get(`/api/spells/${thingId}`)
         .then(res => this.setState({spell: res.data,isHidden: null}))
-        .then(console.log(this.state.spell))
+        .catch(err => console.log(err));
+    }else if(this.state.searchState === 'feature'){
+      Axios
+        .get(`/api/features/${thingId}`)
+        .then(res => this.setState({feature: res.data,isHidden: null}))
         .catch(err => console.log(err));
     }
   }
@@ -90,6 +92,7 @@ class MainControl extends React.Component {
             isHidden={this.state.isHidden}
             handleAddMonsterClick={this.handleAddMonsterClick}
             searchState={this.state.searchState}
+            feature={this.state.feature}
           />
           <RightSidePopOut
             monsterArr={this.state.monsterArr}
