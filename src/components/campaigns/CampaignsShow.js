@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Auth from '../../lib/Auth';
 import LeftSearchPopOut from '../searcher/LeftSearchPopOut';
 import RightSidePopOut from '../viewer/RightSidePopOut';
+import CampaignNavBar from '../navigation/CampaignNavBar';
 
 class CampaignsShow extends React.Component {
   state = {
@@ -43,11 +44,11 @@ class CampaignsShow extends React.Component {
     return(
       <main>
 
-        <h1>{this.state.campaign.name} </h1>
+        <CampaignNavBar campaign={this.state.campaign}/>
         { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCampaign}>DELETE</button>}
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
-        <LeftSearchPopOut monsterArr={this.state.monsterArr}/>
+        <LeftSearchPopOut/>
         <RightSidePopOut players={this.state.players}/>
       </main>
     );
