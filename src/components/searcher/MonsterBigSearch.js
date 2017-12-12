@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
+import {Col} from 'react-bootstrap';
 
 class MonsterBigSearch extends React.Component {
   state = {
@@ -13,7 +14,8 @@ class MonsterBigSearch extends React.Component {
     sortBy: 'name',
     sortDirection: 'asc',
     query: '',
-    isHidden: 'none'
+    isHidden: 'none',
+    monsterArr: []
   };
 
 handleClick = () => {
@@ -34,6 +36,10 @@ handleClick = () => {
     this.setState({classQuery: e.target.value});
   }
 
+  handleAddMonster = () => {
+    this.setState({ monsterArr: [...this.state.monsterArr, this.state.monster] });
+    console.log(this.state.monsterArr);
+  }
 
 
   componentWillMount(){
@@ -69,28 +75,36 @@ handleClick = () => {
     const monsters = this.MonsterSearchSorter();
     return(
       <section>
-        <h3>All Monsters</h3>
-        <div className="search-main-box">
-          <MonsterSearchBar
-            handleSort={this.handleSort}
-            handleSearch={this.handleSearch}
-            handleClassSort={this.handleClassSort}
-          />
-          <div className="search-container">
-            {monsters.map(monster =>
-              <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.monsterViewer.bind(this, monster.id)}>
-                <MonsterBox {...monster} /></a>
-            )}
+        <Col xs={4}>
+
+          <h3>All Monsters</h3>
+          <div className="search-main-box">
+            <MonsterSearchBar
+              handleSort={this.handleSort}
+              handleSearch={this.handleSearch}
+              handleClassSort={this.handleClassSort}
+            />
+            <div className="search-container">
+              {monsters.map(monster =>
+                <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.monsterViewer.bind(this, monster.id)}>
+                  <MonsterBox {...monster} /></a>
+              )}
 
 
+
+            </div>
+          </div>
+        </Col>
+        <Col xs={4}>
+          <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
+            <a href="#" onClick={this.handleClick}>X</a>
+            <h1>{this.state.monster.name}</h1>
+            <a href="#" onClick={this.handleAddMonster}>Add Monster</a>
+            {this.state.monster.actions && this.state.monster.actions.map((action,i) =>
+              <p key={i}>{action.desc}</p>)}
 
           </div>
-        </div>
-
-        <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
-          <a href="#" onClick={this.handleClick}>X</a>
-          <h1>{this.state.monster.name}</h1>
-        </div>
+        </Col>
       </section>
     );
   }

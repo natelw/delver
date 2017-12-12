@@ -1,6 +1,6 @@
 import React from 'react';
 import MonsterBigSearch from './MonsterBigSearch';
-
+import {Col} from 'react-bootstrap';
 class LeftSearchPopOut extends React.Component {
   state = {
 
@@ -11,6 +11,7 @@ class LeftSearchPopOut extends React.Component {
 
   render(){
     return(
+
       <section>
         <div className="left-slider">
           <MonsterBigSearch />

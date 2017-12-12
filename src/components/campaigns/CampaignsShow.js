@@ -3,10 +3,24 @@ import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import Auth from '../../lib/Auth';
 import LeftSearchPopOut from '../searcher/LeftSearchPopOut';
+import RightSidePopOut from '../viewer/RightSidePopOut';
 
 class CampaignsShow extends React.Component {
   state = {
-    campaign: {}
+    campaign: {},
+    players: [
+      {
+        name: 'jimmy',
+        initiative: 3
+      },{
+        name: 'dave',
+        initiative: 7
+      },{
+        name: 'bagpuss',
+        initiative: 21
+      }
+    ],
+    monsterArr: []
   }
 
   componentDidMount() {
@@ -33,7 +47,8 @@ class CampaignsShow extends React.Component {
         { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCampaign}>DELETE</button>}
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
-        <LeftSearchPopOut/>
+        <LeftSearchPopOut monsterArr={this.state.monsterArr}/>
+        <RightSidePopOut players={this.state.players}/>
       </main>
     );
   }

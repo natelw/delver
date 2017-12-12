@@ -1,6 +1,6 @@
 .search-container {
 width: 350px;
-height: 500px;
+height: 300px;
 overflow-y: scroll;
 border: 2px solid black;
 display: inline-block;
@@ -52,9 +52,7 @@ font-family: $primary-font;
 }
 
 .sheet-viewer {
-  width: 500px;
-  height: 600px;
+
   overflow-y: scroll;
-  display: inline-block;
   border: 2px solid black;
 }
