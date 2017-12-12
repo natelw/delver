@@ -18,7 +18,7 @@ import CampaignsShow from '../campaigns/CampaignsShow';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
 import EquipBigSearch from '../searcher/EquipBigSearch';
 import FeaturesBigSearch from '../searcher/FeaturesBigSearch';
-import MonsterBigSearch from '../searcher/MonsterBigSearch';
+import MainControl from '../main/MainControl';
 
 const Routes = () => {
   return (
@@ -32,7 +32,7 @@ const Routes = () => {
       <Route exact path ="/campaigns" component={CampaignsIndex} />
       <Route exact path ="/campaigns/new" component={CampaignsNew} />
       <Route exact path ="/features" component={FeaturesBigSearch} />
-      <Route exact path ="/monsters" component={MonsterBigSearch} />
+      <Route exact path ="/monsters" component={MainControl} />
       <Route path="/users/:id/edit" component={UsersEdit} />
       <Route path="/users/:id" component={UsersShow} />
       <Route path="/sheets/:id/edit" component={SheetsEdit} />

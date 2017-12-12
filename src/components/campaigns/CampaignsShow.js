@@ -5,7 +5,7 @@ import Auth from '../../lib/Auth';
 import LeftSearchPopOut from '../searcher/LeftSearchPopOut';
 import RightSidePopOut from '../viewer/RightSidePopOut';
 import CampaignNavBar from '../navigation/CampaignNavBar';
-
+import MainControl from '../main/MainControl';
 class CampaignsShow extends React.Component {
   state = {
     campaign: {},
@@ -48,8 +48,9 @@ class CampaignsShow extends React.Component {
         { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCampaign}>DELETE</button>}
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
-        <LeftSearchPopOut/>
-        <RightSidePopOut players={this.state.players} monsterArr={this.state.monsterArr}/>
+        <MainControl />
+        {/* <LeftSearchPopOut/>
+        <RightSidePopOut players={this.state.players} monsterArr={this.state.monsterArr}/> */}
       </main>
     );
   }
