@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
+import MiddleViewer from '../viewer/MiddleViewer';
 import {Col} from 'react-bootstrap';
 
 class MonsterBigSearch extends React.Component {
@@ -18,9 +19,7 @@ class MonsterBigSearch extends React.Component {
     monsterArr: []
   };
 
-handleClick = () => {
-  this.setState({isHidden: 'none'});
-}
+
 
   handleSort = (e) => {
     const [sortBy, sortDirection] = e.target.value.split('|');
@@ -95,7 +94,7 @@ handleClick = () => {
             </div>
           </div>
         </Col>
-        <Col xs={4}>
+        {/* <Col xs={4}>
           <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
             <a href="#" onClick={this.handleClick}>X</a>
             <h1>{this.state.monster.name}</h1>
@@ -104,7 +103,8 @@ handleClick = () => {
               <p key={i}>{action.desc}</p>)}
 
           </div>
-        </Col>
+        </Col> */}
+        <MiddleViewer isHidden={this.isHidden} monster={this.monster} handleClick={this.handleClick} handleAddMonster={this.handleAddMonster} />
       </section>
     );
   }

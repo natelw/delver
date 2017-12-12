@@ -21,7 +21,7 @@ class CampaignsShow extends React.Component {
         initiative: 21
       }
     ],
-    monsterArr: []
+    monsterArr: ['beast','chicken']
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ class CampaignsShow extends React.Component {
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
         <LeftSearchPopOut/>
-        <RightSidePopOut players={this.state.players}/>
+        <RightSidePopOut players={this.state.players} monsterArr={this.state.monsterArr}/>
       </main>
     );
   }

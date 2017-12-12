@@ -6,6 +6,8 @@ function RightSidePopOut({players, monsterArr}){
       <div className="right-slider">
         {players.map((player,i) =>
           <p key={'player' + i}>{player.name} {player.initiative}</p>)}
+        {monsterArr.map((monster,i) =>
+          <p key={'monster' + i}>{monster}</p>)}
       </div>
     </section>
   );
