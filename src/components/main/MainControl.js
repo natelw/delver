@@ -4,7 +4,7 @@ import RightSidePopOut from '../viewer/RightSidePopOut';
 import MiddleViewer from '../viewer/MiddleViewer';
 import LeftSidePopOut from '../viewer/LeftSidePopOut';
 import Auth from '../../lib/Auth';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Grid} from 'react-bootstrap';
 
 class MainControl extends React.Component {
   state = {
@@ -117,42 +117,41 @@ class MainControl extends React.Component {
     render(){
       return(
         <section>
-          <Row>
-            <Col md={3} mdpull={3}>
-              <LeftSidePopOut
-                handleSearchClick={this.handleSearchClick}
-                searchState={this.state.searchState}
-                handleSearchChange={this.handleSearchChange}
-              />
-            </Col>
-            <Col md={6}>
-              <MiddleViewer
-                handleExitClick={this.handleExitClick}
-                monster={this.state.monster}
-                spell={this.state.spell}
-                isHidden={this.state.isHidden}
-                handleAddMonsterClick={this.handleAddMonsterClick}
-                searchState={this.state.searchState}
-                feature={this.state.feature}
-                equipment={this.state.equipment}
-                sheet = {this.state.sheet}
-                handleAddSheetClick={this.handleAddSheetClick}
-              />
-            </Col>
-            <Col md={3} mdpush={3}>
-              <RightSidePopOut
-                monsterArr={this.state.monsterArr}
-                players={this.state.players}
-                saveBattle={this.handleSaveBattle}
-                handleSearchClick={this.handleSearchClick}
-                handleSaveBattle={this.handleSaveBattle}
-                handleActiveReset={this.handleActiveReset}
-                handleRollInitDice={this.handleRollInitDice}
-                monsterInit={this.state.monsterInit}
-                handleRollPlayerDice={this.handleRollPlayerDice}
-              />
-            </Col>
-          </Row>
+          <div className="leftsidepopout-box">
+            <LeftSidePopOut
+              handleSearchClick={this.handleSearchClick}
+              searchState={this.state.searchState}
+              handleSearchChange={this.handleSearchChange}
+            />
+          </div>
+          <div className="middleviewer-box">
+            <MiddleViewer
+              handleExitClick={this.handleExitClick}
+              monster={this.state.monster}
+              spell={this.state.spell}
+              isHidden={this.state.isHidden}
+              handleAddMonsterClick={this.handleAddMonsterClick}
+              searchState={this.state.searchState}
+              feature={this.state.feature}
+              equipment={this.state.equipment}
+              sheet = {this.state.sheet}
+              handleAddSheetClick={this.handleAddSheetClick}
+            />
+          </div>
+          <div className="rightsidepopout-box">
+            <RightSidePopOut
+              monsterArr={this.state.monsterArr}
+              players={this.state.players}
+              saveBattle={this.handleSaveBattle}
+              handleSearchClick={this.handleSearchClick}
+              handleSaveBattle={this.handleSaveBattle}
+              handleActiveReset={this.handleActiveReset}
+              handleRollInitDice={this.handleRollInitDice}
+              monsterInit={this.state.monsterInit}
+              handleRollPlayerDice={this.handleRollPlayerDice}
+            />
+          </div>
+
         </section>
       );
     }

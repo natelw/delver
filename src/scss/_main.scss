@@ -1,0 +1,42 @@
+body {
+
+}
+
+.leftsidepopout-box {
+width: 300px;
+float: left;
+}
+
+.middleviewer-box {
+width: 500px;
+float: left;
+margin: 50px;
+
+
+
+.viewer-info-box {
+  margin: 10px;
+}
+
+}
+
+.rightsidepopout-box {
+  float: right;
+  margin: 10px;
+}
+
+.right-slider {
+  overflow-y: scroll;
+  height: 500px;
+  width: 250px;
+}
+.sheet-viewer {
+
+  overflow-y: scroll;
+  width: 650px;
+  height: 500px;
+  background-image: url(https://i.imgur.com/VPxKv6I.jpg);
+  -webkit-box-shadow: 10px 10px 56px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 56px 2px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 56px 2px rgba(0,0,0,0.75);
+}

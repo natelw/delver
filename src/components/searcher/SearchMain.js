@@ -147,17 +147,14 @@ class SearchMain extends React.Component {
     return(
       <section>
 
-        <div className="button-search-switcher">
-          <br />
-          <Nav bsStyle="pills" justified>
-            <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
-            <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
-            <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
-            <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
-            <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
-          </Nav>
+        <Nav bsStyle="pills" justified>
+          <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
+          <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
+          <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
+          <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
+          <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
+        </Nav>
 
-        </div>
 
         {this.props.searchState === 'monster' &&
           <div className="search-main-box">

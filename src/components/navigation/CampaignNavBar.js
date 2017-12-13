@@ -7,17 +7,10 @@ const CampaignNavBar = ({campaign, deleteCampaign}) => {
 
 
   return(
-    <Navbar>
-      <Navbar.Brand>
-        <NavItem>{campaign.name}</NavItem>
-      </Navbar.Brand>
-      <Nav pullRight>
-        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/campaigns" to="/campaigns" active={location.pathname === '/campaigns'}>All Campaigns</NavItem>}
-        { Auth.isAuthenticated() && <NavItem onClick={deleteCampaign}>Delete Campaign</NavItem>}
-
-
-      </Nav>
-    </Navbar>
+    <div className="campaign-title-bar">
+      <span className='campaign-title'>{campaign.name}</span>
+      { Auth.isAuthenticated() && <div onClick={deleteCampaign} className="campaign-delete-button">Delete Campaign</div>}
+    </div>
   );
 
 };
