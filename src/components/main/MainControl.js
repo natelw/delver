@@ -16,7 +16,7 @@ class MainControl extends React.Component {
     isHidden: 'none',
     monsterArr: [],
     searchState: 'spell',
-    players: [{name: 'jimmy', initiative: 5},{name: 'alice', initiative: 12}],
+    players: [],
     spell: {name: 'NO SPELLS'},
     features: [],
     feature: {name: 'NO FEATURES'},
@@ -80,6 +80,9 @@ class MainControl extends React.Component {
       this.setState({ monsterArr: [...this.state.monsterArr, this.state.monster] });
     }
 
+    handleAddSheetClick = () => {
+      this.setState({ players: [...this.state.players, this.state.sheet]});
+    }
     handleSaveBattle = () => {
       console.log('hi');
       // Axios
@@ -89,6 +92,11 @@ class MainControl extends React.Component {
       //   .then(res => this.props.history.push(`/campaigns/${res.data.id}`))
       //   .catch(err => console.log(err));
 
+    }
+
+    handleActiveReset = () => {
+      console.log('sup dog');
+      this.setState({monsterArr: []});
     }
 
     render(){
@@ -109,6 +117,7 @@ class MainControl extends React.Component {
             feature={this.state.feature}
             equipment={this.state.equipment}
             sheet = {this.state.sheet}
+            handleAddSheetClick={this.handleAddSheetClick}
           />
           <RightSidePopOut
             monsterArr={this.state.monsterArr}
@@ -116,6 +125,7 @@ class MainControl extends React.Component {
             saveBattle={this.handleSaveBattle}
             handleSearchClick={this.handleSearchClick}
             handleSaveBattle={this.handleSaveBattle}
+            handleActiveReset={this.handleActiveReset}
           />
         </section>
       );

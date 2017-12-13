@@ -26,6 +26,7 @@ const FeaturesSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
           >
             <ToggleButton value="" onChange={handleClassSort}>All Classes</ToggleButton>
             <ToggleButton value="Bard" onChange={handleClassSort}>Bard</ToggleButton>
+            <ToggleButton value="Cleric" onChange={handleClassSort}>Cleric</ToggleButton>
             <ToggleButton value="Druid" onChange={handleClassSort}>Druid</ToggleButton>
             <ToggleButton value="Paladin" onChange={handleClassSort}>Paladin</ToggleButton>
             <ToggleButton value="Ranger" onChange={handleClassSort}>Ranger</ToggleButton>

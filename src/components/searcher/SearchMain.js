@@ -3,7 +3,7 @@ import Axios from 'axios';
 import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
-import {Col} from 'react-bootstrap';
+import {Col, NavItem, Nav} from 'react-bootstrap';
 import SearchBar from '../searcher/SearchBar';
 import Spellbox from '../searcher/Spellbox';
 import FeaturesSearchBar from '../searcher/FeaturesSearchBar';
@@ -130,6 +130,12 @@ class SearchMain extends React.Component {
     }
   }
 
+  handleSearchType = (type) => {
+    this.props.handleSearchChange.bind(this, type);
+    console.log(type);
+  }
+
+
 
   render(){
     const monsters = this.SearchSorter();
@@ -142,11 +148,19 @@ class SearchMain extends React.Component {
       <section>
         <Col md={4}>
           <div className="button-search-switcher">
-            <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
+            <br />
+            <Nav bsStyle="pills" justified>
+              <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
+              <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
+              <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
+              <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
+              <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
+            </Nav>
+            {/* <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
             <button onClick={this.props.handleSearchChange.bind(this, 'spell')}>spells</button>
             <button onClick={this.props.handleSearchChange.bind(this, 'feature')}>features</button>
             <button onClick={this.props.handleSearchChange.bind(this, 'equipment')}>equipment</button>
-            <button onClick={this.props.handleSearchChange.bind(this, 'sheet')}>My Sheets</button>
+            <button onClick={this.props.handleSearchChange.bind(this, 'sheet')}>My Sheets</button> */}
 
           </div>
 

@@ -15,14 +15,17 @@ const MiddleViewer = ({
   searchState,
   feature,
   equipment,
-  sheet
+  sheet,
+  handleAddSheetClick
 }) => {
 
   return (
     <Col md={6}>
       <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
         <a href="#" onClick={handleExitClick}>X</a>
-        <a href="#" onClick={handleAddMonsterClick}>Add</a>
+        <a href="#" onClick={handleAddMonsterClick}>Add Monster</a>
+        <a href="#" onClick={handleAddSheetClick}>Add Sheet</a>
+
         <h1>{searchState}</h1>
 
         {
