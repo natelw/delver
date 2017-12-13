@@ -74,26 +74,21 @@ class MonsterBigSearch extends React.Component {
     const monsters = this.MonsterSearchSorter();
     return(
       <section>
-        <Col xs={4}>
 
-          <h3>All Monsters</h3>
-          <div className="search-main-box">
-            <MonsterSearchBar
-              handleSort={this.handleSort}
-              handleSearch={this.handleSearch}
-              handleClassSort={this.handleClassSort}
-            />
-            <div className="search-container">
-              {monsters.map(monster =>
-                <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.monsterViewer.bind(this, monster.id)}>
-                  <MonsterBox {...monster} /></a>
-              )}
-
-
-
-            </div>
+        <h3>All Monsters</h3>
+        <div className="search-main-box">
+          <MonsterSearchBar
+            handleSort={this.handleSort}
+            handleSearch={this.handleSearch}
+            handleClassSort={this.handleClassSort}
+          />
+          <div className="search-container">
+            {monsters.map(monster =>
+              <a className='monster-link' href="#" key={monster.id} data-id={monster.id} onClick={this.monsterViewer.bind(this, monster.id)}>
+                <MonsterBox {...monster} /></a>
+            )}
           </div>
-        </Col>
+        </div>
         {/* <Col xs={4}>
           <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
             <a href="#" onClick={this.handleClick}>X</a>

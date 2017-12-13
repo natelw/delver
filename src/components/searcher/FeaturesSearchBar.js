@@ -4,14 +4,12 @@ import { Row, Col, FormGroup, FormControl, ToggleButtonGroup, ToggleButton} from
 const FeaturesSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
 
   return(
-    <Row>
-      <Col md={6}>
+  <section>
         <FormGroup>
           <FormControl type="text" placeholder="Search" onChange={handleSearch}/>
         </FormGroup>
-      </Col>
 
-      <Col md={12}>
+
         <FormGroup>
           <FormControl componentClass="select" onChange={handleSort}>
             <option value="name|asc">Name (A - Z)</option>
@@ -40,9 +38,9 @@ const FeaturesSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
 
           </ToggleButtonGroup>
         </FormGroup>
-      </Col>
+      </section>
 
-    </Row>
+    
   );
 };
 

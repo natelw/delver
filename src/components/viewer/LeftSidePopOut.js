@@ -11,17 +11,15 @@ class LeftSidePopOut extends React.Component {
 
   render(){
     return(
-      <Col xs={6} md={4} >
-        <section>
-          <div className="left-slider">
-            <SearchMain
-              handleSearchClick={this.props.handleSearchClick}
-              searchState={this.props.searchState}
-              handleSearchChange={this.props.handleSearchChange}
-            />
-          </div>
-        </section>
-      </Col>
+      <section>
+        <div className="left-slider">
+          <SearchMain
+            handleSearchClick={this.props.handleSearchClick}
+            searchState={this.props.searchState}
+            handleSearchChange={this.props.handleSearchChange}
+          />
+        </div>
+      </section>
     );
   }
 

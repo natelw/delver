@@ -2,10 +2,10 @@ import React from 'react';
 import Auth from '../../lib/Auth';
 import {Link} from 'react-router-dom';
 
-const SheetShow = ({ sheet }) => {
+const SheetShow = ({ sheet, handleAddSheetClick}) => {
   return (
     <main>
-      <h1>Sheet Show</h1>
+      <a href="#" onClick={handleAddSheetClick}>Add sheet</a>
 
       <h1>{sheet.name} </h1>
       <h3>{sheet.charclass}</h3>

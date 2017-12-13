@@ -20,41 +20,36 @@ const MiddleViewer = ({
 }) => {
 
   return (
-    <Col md={6}>
-      <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
-        <a href="#" onClick={handleExitClick}>X</a>
-        <a href="#" onClick={handleAddMonsterClick}>Add Monster</a>
-        <a href="#" onClick={handleAddSheetClick}>Add Sheet</a>
+    <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
+      <a href="#" onClick={handleExitClick}>X</a>
 
-        <h1>{searchState}</h1>
+      {
+        searchState === 'monster'
+          ? <MonsterShow monster={monster} handleAddMonsterClick={handleAddMonsterClick}/>
+          : null
+      }
+      {
+        searchState === 'spell'
+          ? <SpellShow spell={spell}/>
+          : null
+      }
+      {
+        searchState === 'feature'
+          ? <FeatureShow feature={feature}/>
+          : null
+      }
+      {
+        searchState === 'equipment'
+          ? <EquipmentShow equipment={equipment}/>
+          : null
+      }
+      {
+        searchState === 'sheet'
+          ? <SheetShow sheet={sheet} handleAddSheetClick={handleAddSheetClick}/>
+          : null
+      }
+    </div>
 
-        {
-          searchState === 'monster'
-            ? <MonsterShow monster={monster}/>
-            : null
-        }
-        {
-          searchState === 'spell'
-            ? <SpellShow spell={spell}/>
-            : null
-        }
-        {
-          searchState === 'feature'
-            ? <FeatureShow feature={feature}/>
-            : null
-        }
-        {
-          searchState === 'equipment'
-            ? <EquipmentShow equipment={equipment}/>
-            : null
-        }
-        {
-          searchState === 'sheet'
-            ? <SheetShow sheet={sheet}/>
-            : null
-        }
-      </div>
-    </Col>
   );
 };
 

@@ -19,7 +19,8 @@ const sheetSchema = new mongoose.Schema({
   proficiencies: Array,
   skills: Array,
   equipment: Array,
-  bio: String
+  bio: String,
+  last_Init: Number
   // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true

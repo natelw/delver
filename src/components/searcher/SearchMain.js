@@ -146,25 +146,20 @@ class SearchMain extends React.Component {
 
     return(
       <section>
-        <Col md={4}>
-          <div className="button-search-switcher">
-            <br />
-            <Nav bsStyle="pills" justified>
-              <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
-              <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
-              <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
-              <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
-              <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
-            </Nav>
-            {/* <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
-            <button onClick={this.props.handleSearchChange.bind(this, 'spell')}>spells</button>
-            <button onClick={this.props.handleSearchChange.bind(this, 'feature')}>features</button>
-            <button onClick={this.props.handleSearchChange.bind(this, 'equipment')}>equipment</button>
-            <button onClick={this.props.handleSearchChange.bind(this, 'sheet')}>My Sheets</button> */}
 
-          </div>
+        <div className="button-search-switcher">
+          <br />
+          <Nav bsStyle="pills" justified>
+            <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
+            <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
+            <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
+            <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
+            <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
+          </Nav>
 
-          {this.props.searchState === 'monster' &&
+        </div>
+
+        {this.props.searchState === 'monster' &&
           <div className="search-main-box">
             <MonsterSearchBar
               handleSort={this.handleSort}
@@ -178,7 +173,7 @@ class SearchMain extends React.Component {
               )}
             </div>
           </div>
-          }{this.props.searchState === 'spell' &&
+        }{this.props.searchState === 'spell' &&
         <div className="search-main-box">
           <SearchBar
             handleSort={this.handleSort}
@@ -192,7 +187,7 @@ class SearchMain extends React.Component {
             )}
           </div>
         </div>
-          }{this.props.searchState === 'feature' &&
+        }{this.props.searchState === 'feature' &&
               <div className="search-main-box">
                 <FeaturesSearchBar
                   handleSort={this.handleSort}
@@ -208,7 +203,7 @@ class SearchMain extends React.Component {
                 </div>
               </div>
 
-          }{this.props.searchState === 'equipment' &&
+        }{this.props.searchState === 'equipment' &&
               <div className="search-main-box">
                 <EquipSearchBar
                   handleSort={this.handleSort}
@@ -223,7 +218,7 @@ class SearchMain extends React.Component {
                   )}
                 </div>
               </div>
-          }{this.props.searchState === 'sheet' &&
+        }{this.props.searchState === 'sheet' &&
               <div className="search-main-box">
                 <SheetSearchBar
                   handleSort={this.handleSort}
@@ -238,8 +233,7 @@ class SearchMain extends React.Component {
                   )}
                 </div>
               </div>
-          }
-        </Col>
+        }
       </section>
     );
   }
