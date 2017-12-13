@@ -1,12 +1,12 @@
 
 import React from 'react';
 
-const MonsterBox = ({ name }) => {
+const SheetBox = ({ name, level}) => {
   return (
 
     <div className="databox-single"><div className="single-text">{name}</div>
-    </div>
+      <div className="single-level">{level}</div></div>
   );
 };
 
-export default MonsterBox;
+export default SheetBox;

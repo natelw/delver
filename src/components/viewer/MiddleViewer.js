@@ -4,6 +4,7 @@ import MonsterShow from './MonsterShow';
 import SpellShow from './SpellShow';
 import FeatureShow from './FeatureShow';
 import EquipmentShow from './EquipmentShow';
+import SheetShow from './SheetShow';
 
 const MiddleViewer = ({
   handleExitClick,
@@ -13,11 +14,12 @@ const MiddleViewer = ({
   spell,
   searchState,
   feature,
-  equipment
+  equipment,
+  sheet
 }) => {
 
   return (
-    <Col xs={4}>
+    <Col md={6}>
       <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
         <a href="#" onClick={handleExitClick}>X</a>
         <a href="#" onClick={handleAddMonsterClick}>Add</a>
@@ -41,6 +43,11 @@ const MiddleViewer = ({
         {
           searchState === 'equipment'
             ? <EquipmentShow equipment={equipment}/>
+            : null
+        }
+        {
+          searchState === 'sheet'
+            ? <SheetShow sheet={sheet}/>
             : null
         }
       </div>

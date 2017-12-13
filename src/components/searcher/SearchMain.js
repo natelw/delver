@@ -10,6 +10,8 @@ import FeaturesSearchBar from '../searcher/FeaturesSearchBar';
 import FeatureBox from '../searcher/FeatureBox';
 import EquipSearchBar from '../searcher/EquipSearchBar';
 import EquipBox from '../searcher/EquipBox';
+import SheetBox from '../searcher/SheetBox';
+import SheetSearchBar from '../searcher/SheetSearchBar';
 
 class SearchMain extends React.Component {
   state = {
@@ -23,7 +25,8 @@ class SearchMain extends React.Component {
     monsterArr: [],
     spells: [],
     features: [],
-    equipments: []
+    equipments: [],
+    sheets: []
   };
 
 
@@ -66,6 +69,10 @@ class SearchMain extends React.Component {
     Axios
       .get('/api/equipments')
       .then(res => this.setState({equipments: res.data}))
+      .catch(err => console.log(err));
+    Axios
+      .get('/api/sheets')
+      .then(res => this.setState({sheets: res.data}))
       .catch(err => console.log(err));
   }
 
@@ -111,8 +118,16 @@ class SearchMain extends React.Component {
         return regex.test(equipment.name);
       });
       return equipments;
+    }else if(this.props.searchState === 'sheet'){
+      const orderedSheets = _.orderBy(this.state.sheets, [sortBy],[sortDirection]);
+      const classedSheets = _.filter(orderedSheets, (sheet) =>{
+        return classRegex.test(sheet.charclass);
+      });
+      const sheets = _.filter(classedSheets, (sheet) => {
+        return regex.test(sheet.name);
+      });
+      return sheets;
     }
-
   }
 
 
@@ -121,15 +136,19 @@ class SearchMain extends React.Component {
     const spells = this.SearchSorter();
     const features = this.SearchSorter();
     const equipments = this.SearchSorter();
+    const sheets = this.SearchSorter();
+
     return(
       <section>
-        <Col xs={4}>
+        <Col md={4}>
+          <div className="button-search-switcher">
+            <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
+            <button onClick={this.props.handleSearchChange.bind(this, 'spell')}>spells</button>
+            <button onClick={this.props.handleSearchChange.bind(this, 'feature')}>features</button>
+            <button onClick={this.props.handleSearchChange.bind(this, 'equipment')}>equipment</button>
+            <button onClick={this.props.handleSearchChange.bind(this, 'sheet')}>My Sheets</button>
 
-          <button onClick={this.props.handleSearchChange.bind(this, 'monster')}>monsters</button>
-          <button onClick={this.props.handleSearchChange.bind(this, 'spell')}>spells</button>
-          <button onClick={this.props.handleSearchChange.bind(this, 'feature')}>features</button>
-          <button onClick={this.props.handleSearchChange.bind(this, 'equipment')}>equipment</button>
-
+          </div>
 
           {this.props.searchState === 'monster' &&
           <div className="search-main-box">
@@ -187,6 +206,21 @@ class SearchMain extends React.Component {
                     <a className='feature-link' href='#' key={'equequ' + equipment.id} data-id={equipment.id}
                       onClick={this.props.handleSearchClick.bind(this, equipment.id)}>
                       <EquipBox {...equipment} /></a>
+                  )}
+                </div>
+              </div>
+          }{this.props.searchState === 'sheet' &&
+              <div className="search-main-box">
+                <SheetSearchBar
+                  handleSort={this.handleSort}
+                  handleSearch={this.handleSearch}
+                  handleClassSort={this.handleClassSort}
+                />
+                <div className="search-container">
+                  {sheets.map(sheet =>
+                    <a className='sheet-link' href='#' key={'sheshe' + sheet.id} data-id={sheet.id}
+                      onClick={this.props.handleSearchClick.bind(this, sheet.id)}>
+                      <SheetBox {...sheet} /></a>
                   )}
                 </div>
               </div>

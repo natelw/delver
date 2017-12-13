@@ -1,15 +1,16 @@
 import React from 'react';
 
-function RightSidePopOut({players, monsterArr}){
+function RightSidePopOut({players, monsterArr, handleSearchClick, handleSaveBattle}){
   return(
     <section>
       <div className="right-slider">
         {players && players.map((player,i) =>
           <p key={'player' + i}>{player.name} {player.initiative}</p>)}
         {monsterArr && monsterArr.map((monster,i) =>
-          <p key={'monster' + i}>{monster.name}</p>)}
+          <div className="databox-single" key={'monster' + i} onClick={handleSearchClick.bind(this, monster.id)}><div className="single-text">{monster.name}</div></div>)}
+        <button onClick={handleSaveBattle} >Save Battle</button>
+
       </div>
-      <h1></h1>
     </section>
   );
 

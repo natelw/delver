@@ -40,6 +40,11 @@ class CampaignsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  handleSaveBattle = () => {
+    console.log(this.props.campaign.monsters);
+
+  }
+
   render(){
     return(
       <main>
@@ -48,7 +53,7 @@ class CampaignsShow extends React.Component {
         { Auth.isAuthenticated() && <button className="delete-button" onClick={this.deleteCampaign}>DELETE</button>}
         { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button>
         </Link>}
-        <MainControl />
+        <MainControl campaign={this.state.campaign} handleSaveBattle={this.handleSaveBattle}/>
         {/* <LeftSearchPopOut/>
         <RightSidePopOut players={this.state.players} monsterArr={this.state.monsterArr}/> */}
       </main>

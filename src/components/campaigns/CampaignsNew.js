@@ -16,7 +16,7 @@ state = {
   handleSubmit = (e) => {
     e.preventDefault();
     Axios
-      .post('/api/campaigns', this.state.campaign)
+      .post('/api/campaigns', this.state.campaign, ({ createdBy: 'i did this'}))
       .then(() => this.props.history.push('/campaigns'))
       .catch(err => console.log(err));
   }

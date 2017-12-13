@@ -1,8 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
-import SearchMain from '../searcher/SearchMain';
 import RightSidePopOut from '../viewer/RightSidePopOut';
 import MiddleViewer from '../viewer/MiddleViewer';
+import LeftSidePopOut from '../viewer/LeftSidePopOut';
+import Auth from '../../lib/Auth';
 
 class MainControl extends React.Component {
   state = {
@@ -19,7 +20,8 @@ class MainControl extends React.Component {
     spell: {name: 'NO SPELLS'},
     features: [],
     feature: {name: 'NO FEATURES'},
-    equipment: {name: 'NO EQUIPMENT'}
+    equipment: {name: 'NO EQUIPMENT'},
+    sheet: {}
 
   };
 
@@ -39,10 +41,6 @@ class MainControl extends React.Component {
 
   handleClassSort = (e) => {
     this.setState({classQuery: e.target.value});
-  }
-
-  handleAddMonster = () => {
-    console.log(this.state.monsterArr);
   }
 
   handleSearchClick = (thingId) => {
@@ -66,6 +64,11 @@ class MainControl extends React.Component {
         .get(`/api/equipments/${thingId}`)
         .then(res => this.setState({equipment: res.data,isHidden: null}))
         .catch(err => console.log(err));
+    }else if(this.state.searchState === 'sheet'){
+      Axios
+        .get(`/api/sheets/${thingId}`)
+        .then(res => this.setState({sheet: res.data,isHidden: null}))
+        .catch(err => console.log(err));
     }
   }
 
@@ -75,18 +78,23 @@ class MainControl extends React.Component {
 
     handleAddMonsterClick = () => {
       this.setState({ monsterArr: [...this.state.monsterArr, this.state.monster] });
-      console.log(this.state.monsterArr[0]);
     }
 
-    saveBattle = () => {
-
+    handleSaveBattle = () => {
+      console.log('hi');
+      // Axios
+      //   .put(`/api/campaigns/${this.props.match.params.id}`, this.state.campaign, {
+      //     headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+      //   })
+      //   .then(res => this.props.history.push(`/campaigns/${res.data.id}`))
+      //   .catch(err => console.log(err));
 
     }
 
     render(){
       return(
         <section>
-          <SearchMain
+          <LeftSidePopOut
             handleSearchClick={this.handleSearchClick}
             searchState={this.state.searchState}
             handleSearchChange={this.handleSearchChange}
@@ -100,11 +108,14 @@ class MainControl extends React.Component {
             searchState={this.state.searchState}
             feature={this.state.feature}
             equipment={this.state.equipment}
+            sheet = {this.state.sheet}
           />
           <RightSidePopOut
             monsterArr={this.state.monsterArr}
             players={this.state.players}
-            saveBattle={this.saveBattle}
+            saveBattle={this.handleSaveBattle}
+            handleSearchClick={this.handleSearchClick}
+            handleSaveBattle={this.handleSaveBattle}
           />
         </section>
       );

@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const campaignSchema = new mongoose.Schema({
   name: { type: String, required: true },
   dungeon_master: [String],
-  players: [String],
-  resources: [String]
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  players: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
+  monsters: [{type: mongoose.Schema.ObjectId, ref: 'Monster'}],
+  character_sheets: [{type: mongoose.Schema.ObjectId, ref: 'Sheet'}],
+  monster_last_initiative: Number,
+  createdBy: String
 }, {
   timestamps: true
 });
