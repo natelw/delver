@@ -51,32 +51,11 @@ class MainControl extends React.Component {
   }
 
   handleSearchClick = (thingId) => {
-    if(this.state.searchState === 'monster'){
-      Axios
-        .get(`/api/monsters/${thingId}`)
-        .then(res => this.setState({monster: res.data,isHidden: null}))
-        .catch(err => console.log(err));
-    }else if(this.state.searchState === 'spell'){
-      Axios
-        .get(`/api/spells/${thingId}`)
-        .then(res => this.setState({spell: res.data,isHidden: null}))
-        .catch(err => console.log(err));
-    }else if(this.state.searchState === 'feature'){
-      Axios
-        .get(`/api/features/${thingId}`)
-        .then(res => this.setState({feature: res.data,isHidden: null}))
-        .catch(err => console.log(err));
-    }else if(this.state.searchState === 'equipment'){
-      Axios
-        .get(`/api/equipments/${thingId}`)
-        .then(res => this.setState({equipment: res.data,isHidden: null}))
-        .catch(err => console.log(err));
-    }else if(this.state.searchState === 'sheet'){
-      Axios
-        .get(`/api/sheets/${thingId}`)
-        .then(res => this.setState({sheet: res.data,isHidden: null}))
-        .catch(err => console.log(err));
-    }
+    const resource = this.state.searchState;
+    Axios
+      .get(`/api/${resource}s/${thingId}`)
+      .then(res => this.setState({ [resource]: res.data,isHidden: null }))
+      .catch(err => console.log(err));
   }
 
     handleExitClick = () => {
@@ -84,32 +63,29 @@ class MainControl extends React.Component {
     };
 
     handleAddMonsterClick = () => {
-      this.setState({ monsterArr: [...this.state.monsterArr, this.state.monster] });
-      this.setState({ monsterIdArr: [...this.state.monsterIdArr, this.state.monster.id] });
-
-
-
-      console.log(this.state.monsterIdArr);
+      this.setState({
+        monsterArr: [...this.state.monsterArr, this.state.monster],
+        monsterIdArr: [...this.state.monsterIdArr, this.state.monster.id]
+      }, () => {
+        Axios
+          .put(`/api/campaigns/${this.props.campaign.id}`, { monsters: this.state.monsterIdArr })
+          .catch(err => console.log(err));
+      });
     }
 
     handleAddSheetClick = () => {
       this.setState({ players: [...this.state.players, this.state.sheet]});
     }
-    handleSaveBattle = () => {
-      console.log(this.state.campaign);
-      Axios
-        .put(`/api/campaigns/${this.props.campaign.id}`, this.state.campaign,
-          { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
-          })
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-
-    }
 
     handleActiveReset = () => {
-      this.setState({monsterArr: []});
-      this.setState({monsterIdArr: []});
-      this.setState({players: []});
+      this.setState({
+        monsterArr: [],
+        monsterIdArr: []
+      }, () => {
+        Axios
+          .put(`/api/campaigns/${this.props.campaign.id}`, { monsters: [] })
+          .catch(err => console.log(err));
+      });
 
     }
 
@@ -176,11 +152,11 @@ class MainControl extends React.Component {
               players={this.state.players}
               saveBattle={this.handleSaveBattle}
               handleSearchClick={this.handleSearchClick}
-              handleSaveBattle={this.handleSaveBattle}
               handleActiveReset={this.handleActiveReset}
               handleRollInitDice={this.handleRollInitDice}
               monsterInit={this.state.monsterInit}
               handleRollPlayerDice={this.handleRollPlayerDice}
+              campaign={this.props.campaign}
             />
           </div>
 

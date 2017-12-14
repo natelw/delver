@@ -7,21 +7,22 @@ function RightSidePopOut({
   handleSaveBattle,
   handleActiveReset,
   handleRollInitDice,
-  handleRollPlayerDice
+  handleRollPlayerDice,
+  campaign
 
 }){
   return(
     <section>
       <h3>Favourites</h3>
-      <button onClick={handleSaveBattle} >Save</button>
       <button onClick={handleActiveReset} >Reset</button>
-      <button onClick={handleRollInitDice}>Roll</button>
       <div className="right-slider">
 
         {players && players.map((player,i) =>
           <p key={'player' + i}>{player.name} <button onClick={handleRollPlayerDice}>Roll</button></p>)}
 
         {monsterArr && monsterArr.map((monster,i) =>
+          <div className="databox-single" key={'monster' + i} onClick={handleSearchClick.bind(this, monster.id)}><div className="single-text">{monster.name}</div></div>)}
+        {campaign.monsters && campaign.monsters.map((monster,i) =>
           <div className="databox-single" key={'monster' + i} onClick={handleSearchClick.bind(this, monster.id)}><div className="single-text">{monster.name}</div></div>)}
       </div>
     </section>

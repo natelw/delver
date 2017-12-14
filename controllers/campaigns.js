@@ -3,6 +3,7 @@ const Campaign = require('../models/Campaign');
 function campaignsIndex(req, res, next){
   Campaign
     .find()
+    .populate('monsters')
     .exec()
     .then(campaigns => res.status(200).json(campaigns))
     .catch(next);
@@ -40,9 +41,13 @@ function campaignsDelete(req, res, next){
 
 function campaignsUpdate(req, res, next){
   Campaign
-    .findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .findById(req.params.id)
     .exec()
-    .then(campaign => res.status(200).json(campaign))
+    .then((campaign) => {
+      Object.assign(campaign, req.body);
+      return campaign.save();
+    })
+    .then(campaign => res.json(campaign))
     .catch(next);
 }
 
