@@ -1,23 +1,24 @@
 .search-container {
 height: 275px;
 overflow-y: scroll;
-border: 2px solid black;
 display: inline-block;
 width: 300px;
 margin: 10px;
+border-top: 1px solid gold;
+border-bottom: 1px solid gold;
+border-radius: 5px;
 }
 
-body {
-  overflow-y: hidden;
-}
 
 
 .databox-single {
-border: 1px solid black;
+border-top: 1px solid gold;
+border-bottom: 1px solid gold;
+border-radius: 5px;
+
 width: 100%;
 height: 30px;
 margin: 2px 0px 2px 0px;
-background-color: grey;
 
 .single-text {
 font-family: $primary-font;
@@ -25,7 +26,7 @@ padding: 5px;
 width: 250px;
 position: relative;
 display: inline-block;
-color: white;
+color: black;
   }
 
 .single-level {

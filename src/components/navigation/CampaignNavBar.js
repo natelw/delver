@@ -10,6 +10,7 @@ const CampaignNavBar = ({campaign, deleteCampaign}) => {
     <div className="campaign-title-bar">
       <span className='campaign-title'>{campaign.name}</span>
       { Auth.isAuthenticated() && <div onClick={deleteCampaign} className="campaign-delete-button">Delete Campaign</div>}
+
     </div>
   );
 

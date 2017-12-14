@@ -24,11 +24,14 @@ state = {
 
   render() {
     return (
-      <SheetsForm
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        sheet={this.state.sheet}
-      />
+      <div className='sheets-new-form-box'>
+        <h3>New Character Sheet</h3>
+        <SheetsForm
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          sheet={this.state.sheet}
+        />
+      </div>
     );
   }
 

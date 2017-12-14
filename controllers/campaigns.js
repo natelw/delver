@@ -20,6 +20,7 @@ function campaignsCreate(req, res, next){
 function campaignsShow(req, res, next){
   Campaign
     .findById(req.params.id)
+    .populate('monsters')
     .exec()
     .then(campaign => res.status(200).json(campaign))
     .catch(next);

@@ -13,7 +13,7 @@ class CampaignsEdit extends React.Component{
 
   componentDidMount() {
     Axios
-      .get(`/api/campaigns/${this.props.match.params.id}`)
+      .get(`/api/campaigns/${this.props.campaign.id}`)
       .then(res => this.setState({ campaign: res.data }))
       .catch(err => console.log(err));
   }
@@ -27,7 +27,7 @@ handleSubmit = (e) => {
   e.preventDefault();
 
   Axios
-    .put(`/api/campaigns/${this.props.match.params.id}`, this.state.campaign, {
+    .put(`/api/campaigns/${this.props.campaign.id}`, this.state.campaign, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
     })
     .then(res => this.props.history.push(`/campaigns/${res.data.id}`))

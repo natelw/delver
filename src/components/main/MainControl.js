@@ -4,30 +4,33 @@ import RightSidePopOut from '../viewer/RightSidePopOut';
 import MiddleViewer from '../viewer/MiddleViewer';
 import LeftSidePopOut from '../viewer/LeftSidePopOut';
 import Auth from '../../lib/Auth';
-import {Row, Col, Grid} from 'react-bootstrap';
 
 class MainControl extends React.Component {
-  state = {
-    monsters: [],
-    monster: {name: 'NO MONSTERS'},
-    monsterID: '',
-    sortBy: 'name',
-    sortDirection: 'asc',
-    query: '',
-    isHidden: 'none',
-    monsterArr: [],
-    searchState: 'spell',
-    players: [],
-    spell: {name: 'NO SPELLS'},
-    features: [],
-    feature: {name: 'NO FEATURES'},
-    equipment: {name: 'NO EQUIPMENT'},
-    sheet: {
-      last_init: 1
-    },
-    monsterInit: 1
+  constructor(){
+    super();
+    this.state = {
+      monsters: [],
+      monster: {name: 'NO MONSTERS'},
+      monsterID: '',
+      sortBy: 'name',
+      sortDirection: 'asc',
+      query: '',
+      isHidden: 'none',
+      monsterArr: [],
+      searchState: 'spell',
+      players: [],
+      spell: {name: 'NO SPELLS'},
+      features: [],
+      feature: {name: 'NO FEATURES'},
+      equipment: {name: 'NO EQUIPMENT'},
+      sheet: {},
+      monsterInit: 1,
+      campaign: {},
+      monsterIdArr: [],
+      mainState: 'newsheet'
+    };
+  }
 
-  };
 
   handleSearchChange = (changeTo) => {
     this.setState({searchState: changeTo});
@@ -82,25 +85,31 @@ class MainControl extends React.Component {
 
     handleAddMonsterClick = () => {
       this.setState({ monsterArr: [...this.state.monsterArr, this.state.monster] });
+      this.setState({ monsterIdArr: [...this.state.monsterIdArr, this.state.monster.id] });
+
+
+
+      console.log(this.state.monsterIdArr);
     }
 
     handleAddSheetClick = () => {
       this.setState({ players: [...this.state.players, this.state.sheet]});
     }
     handleSaveBattle = () => {
-      console.log('hi');
-      // Axios
-      //   .put(`/api/campaigns/${this.props.match.params.id}`, this.state.campaign, {
-      //     headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
-      //   })
-      //   .then(res => this.props.history.push(`/campaigns/${res.data.id}`))
-      //   .catch(err => console.log(err));
+      console.log(this.state.campaign);
+      Axios
+        .put(`/api/campaigns/${this.props.campaign.id}`, this.state.campaign,
+          { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+          })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 
     }
 
     handleActiveReset = () => {
-      console.log('sup dog');
       this.setState({monsterArr: []});
+      this.setState({monsterIdArr: []});
+
     }
 
     handleRollInitDice = () => {
@@ -114,9 +123,22 @@ class MainControl extends React.Component {
       console.log(randomD20);
     }
 
+    handleNewSheet =() => {
+      this.setState({mainState: 'newsheet'});
+    }
+
+    handleHomeClick = () => {
+      this.setState({mainState: 'home'});
+    }
+
+    handleCampEditClick = () => {
+      this.setState({mainState: 'campaignedit'});
+    }
+
     render(){
       return(
         <section>
+          <p>{this.state.campaign.name}</p>
           <div className="leftsidepopout-box">
             <LeftSidePopOut
               handleSearchClick={this.handleSearchClick}
@@ -136,6 +158,11 @@ class MainControl extends React.Component {
               equipment={this.state.equipment}
               sheet = {this.state.sheet}
               handleAddSheetClick={this.handleAddSheetClick}
+              handleNewSheet={this.handleNewSheet}
+              mainState={this.state.mainState}
+              handleHomeClick={this.handleHomeClick}
+              campaign={this.props.campaign}
+              handleCampEditClick={this.handleCampEditClick}
             />
           </div>
           <div className="rightsidepopout-box">
