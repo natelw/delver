@@ -7,6 +7,8 @@ import EquipmentShow from './EquipmentShow';
 import SheetShow from './SheetShow';
 import SheetsNew from '../sheets/SheetsNew';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
+import DiceRoller from '../main/DiceRoller';
+
 const MiddleViewer = ({
   handleExitClick,
   monster,
@@ -22,7 +24,8 @@ const MiddleViewer = ({
   mainState,
   handleHomeClick,
   campaign,
-  handleCampEditClick
+  handleCampEditClick,
+  handleDiceRoller
 }) => {
 
   return (
@@ -32,6 +35,7 @@ const MiddleViewer = ({
           <NavItem onClick={handleHomeClick}>Home</NavItem>
           <NavItem onClick={handleCampEditClick}>Edit Campaign</NavItem>
           <NavItem onClick={handleNewSheet}>New Character Sheet</NavItem>
+          <NavItem onClick={handleDiceRoller}>Dice Roller</NavItem>
 
         </Nav>
         {
@@ -42,6 +46,11 @@ const MiddleViewer = ({
         {
           mainState === 'campaignedit'
             ?  <CampaignsEdit campaign={campaign}/>
+            : null
+        }
+        {
+          mainState === 'diceroller'
+            ?  <DiceRoller />
             : null
         }
       </div>

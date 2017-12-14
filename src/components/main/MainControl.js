@@ -135,6 +135,9 @@ class MainControl extends React.Component {
     handleCampEditClick = () => {
       this.setState({mainState: 'campaignedit'});
     }
+    handleDiceRoller = () => {
+      this.setState({mainState: 'diceroller'});
+    }
 
     render(){
       return(
@@ -164,6 +167,7 @@ class MainControl extends React.Component {
               handleHomeClick={this.handleHomeClick}
               campaign={this.props.campaign}
               handleCampEditClick={this.handleCampEditClick}
+              handleDiceRoller={this.handleDiceRoller}
             />
           </div>
           <div className="rightsidepopout-box">
