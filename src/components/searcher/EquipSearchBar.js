@@ -19,12 +19,12 @@ const EquipSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
           name="equipmentoptions"
           className="equipment-toggles"
         >
-          <ToggleButton value="" onChange={handleClassSort}>All Equipment</ToggleButton>
+          <ToggleButton value="" onChange={handleClassSort}>All</ToggleButton>
           <ToggleButton value="Weapon" onChange={handleClassSort}>Weapon</ToggleButton>
           <ToggleButton value="Armor" onChange={handleClassSort}>Armor</ToggleButton>
-          <ToggleButton value="Adventuring Gear" onChange={handleClassSort}>Adventuring Gear</ToggleButton>
+          <ToggleButton value="Adventuring Gear" onChange={handleClassSort}>Gear</ToggleButton>
           <ToggleButton value="Tools" onChange={handleClassSort}>Tools</ToggleButton>
-          <ToggleButton value="Mounts and Vehicles" onChange={handleClassSort}>Mounts and Vehicles</ToggleButton>
+          <ToggleButton value="Mounts and Vehicles" onChange={handleClassSort}>Mounts</ToggleButton>
 
         </ToggleButtonGroup>
       </FormGroup>

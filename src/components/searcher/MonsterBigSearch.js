@@ -89,16 +89,7 @@ class MonsterBigSearch extends React.Component {
             )}
           </div>
         </div>
-        {/* <Col xs={4}>
-          <div className="sheet-viewer" style={{ display: this.state.isHidden ? 'none' : null }}>
-            <a href="#" onClick={this.handleClick}>X</a>
-            <h1>{this.state.monster.name}</h1>
-            <a href="#" onClick={this.handleAddMonster}>Add Monster</a>
-            {this.state.monster.actions && this.state.monster.actions.map((action,i) =>
-              <p key={i}>{action.desc}</p>)}
 
-          </div>
-        </Col> */}
         <MiddleViewer isHidden={this.isHidden} monster={this.monster} handleClick={this.handleClick} handleAddMonster={this.handleAddMonster} />
       </section>
     );

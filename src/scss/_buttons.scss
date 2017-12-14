@@ -1,0 +1,54 @@
+@import 'variables';
+
+.btn {
+  background: $primary-black;
+
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  text-shadow: 1px 1px 3px #666666;
+  font-family: $primary-font;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 5px;
+  text-decoration: none;
+  margin: 2px;
+  outline: none;
+  border: none;
+  width: 85px;
+
+}
+
+.btn:hover {
+  background:$primary-main;
+  color: white;
+  text-decoration: none;
+}
+
+.btn:focus{
+
+    outline: none;
+    color: white;
+
+}
+
+.favourite-button {
+  cursor:pointer;
+  margin:5px;
+  font-size: 16px;
+  width:30px;
+}
+
+.favourite-button:hover {
+  color:$secondary-main;
+}
+
+
+.close-button-box {
+float: right;
+margin: 7px 10px;
+font-size: 16px;
+cursor:pointer;
+}
+.close-button-box:hover {
+  color: $secondary-main;
+}

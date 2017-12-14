@@ -23,6 +23,7 @@ const SheetSearchBar = ({ handleSort, handleSearch, handleClassSort }) => {
           name="charclassoptions"
           className="class-toggles"
         >
+          
           <ToggleButton value="" onChange={handleClassSort}>All Classes</ToggleButton>
           <ToggleButton value="Bard" onChange={handleClassSort}>Bard</ToggleButton>
           <ToggleButton value="Druid" onChange={handleClassSort}>Druid</ToggleButton>

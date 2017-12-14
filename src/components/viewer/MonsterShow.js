@@ -3,33 +3,47 @@ import React from 'react';
 const MonsterShow = ({ monster, handleAddMonsterClick }) => {
   return (
     <div>
-      <a href="#" onClick={handleAddMonsterClick}>Add Monster</a>
-
+      <div className="favourite-button"  onClick={handleAddMonsterClick}>
+        <i className="fa fa-heart" aria-hidden="true"></i>
+      </div>
+      <div className="vertical-stats-box">
+        <div className="stat-viewer-box">{'AC: ' + monster.armor_class}</div>
+        <div className="stat-viewer-box">{'HP: ' + monster.hit_points}</div>
+        <div className="stat-viewer-box">{'HD: ' + monster.hit_dice}</div>
+        <div className="stat-viewer-box">{'Str: ' + monster.strength}</div>
+        <div className="stat-viewer-box">{'Dex: ' + monster.dexterity}</div>
+        <div className="stat-viewer-box">{'Con: ' + monster.constitution}</div>
+        <div className="stat-viewer-box">{'Int: ' + monster.intelligence}</div>
+        <div className="stat-viewer-box">{'Wis: ' + monster.wisdom}</div>
+        <div className="stat-viewer-box">{'Cha: ' + monster.charisma}</div>
+      </div>
       <h1>{monster.name}</h1>
       <div className="monster-top-stats">
-        <h3>{'Challenge Rating: ' + monster.challenge_rating}</h3>
-
-        <p>{monster.size}</p>
-        <p>{monster.type}</p>
-        <p>{monster.subtype}</p>
-        <p>{monster.alignment}</p>
+        <div className="key-stat-box">{monster.size}</div>
+        <div className="key-stat-box">{monster.type}</div>
+        <div className="key-stat-box">{monster.subtype}</div>
+        <div className="key-stat-box">{monster.alignment}</div>
       </div>
+
+
+      <hr/>
+      <h3>{'Challenge Rating: ' + monster.challenge_rating}</h3>
+      <div className="resistance-box">
+        <p>{'Speed:' + monster.speed}</p>
+        <p>{monster.senses && 'Senses: ' + monster.senses}</p>
+        <p>{monster.languages && 'Languages: ' + monster.languages}</p>
+        <p>{monster.damage_vulnerabilities && 'Damage Vunerability: ' + monster.damage_vulnerabilities}</p>
+        <p>{monster.damage_resistances && 'Damage Resistance: ' + monster.damage_resistances}</p>
+        <p>{monster.damage_immunities && 'Damage Immunities: ' + monster.damage_immunities}</p>
+        <p>{monster.condition_immunities && 'Condition Immunities: ' + monster.condition_immunities}</p>
+      </div>
+      <hr/>
       {monster.actions && monster.actions.map((action,i) =>
         <p key={'actmonst' + i}>{action.desc}</p>)}
 
-      <div className="monster-statystats">
-        <p>{monster.armor_class}</p>
-        <p>{'Hit Points:' + monster.hit_points}</p>
-        <p>{'Hit Dice:' + monster.hit_dice}</p>
-        <p>{'Speed:' + monster.speed}</p>
-        <p>{'Str:' + monster.strength}</p>
-        <p>{'Dex:' + monster.dexterity}</p>
-        <p>{'Con:' + monster.constitution}</p>
-        <p>{'Int:' + monster.intelligence}</p>
-        <p>{'Wis:' + monster.wisdom}</p>
-        <p>{'Cha;' + monster.charisma}</p>
-      </div>
+
       <div className="monster-saves-resists">
+
         <p>{monster.strength_save}</p>
         <p>{monster.dexterity_save}</p>
         <p>{monster.constitution_save}</p>
@@ -55,12 +69,6 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
         <p>{monster.stealth}</p>
         <p>{monster.survival}</p>
       </div>
-      <p>{monster.damage_vulnerabilities && 'Damage Vunerability: ' + monster.damage_vulnerabilities}</p>
-      <p>{monster.damage_resistances && 'Damage Resistance: ' + monster.damage_resistances}</p>
-      <p>{monster.damage_immunities && 'Damage Immunities: ' + monster.damage_immunities}</p>
-      <p>{monster.condition_immunities && 'Condition Immunities: ' + monster.condition_immunities}</p>
-      <p>{monster.senses && 'Senses: ' + monster.senses}</p>
-      <p>{monster.languages && 'Languages: ' + monster.languages}</p>
 
     </div>
   );

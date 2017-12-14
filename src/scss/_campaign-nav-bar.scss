@@ -1,14 +1,35 @@
+@import 'variables';
+
 .campaign-title-bar {
   width:100%;
-  height: 30px;
+  height: 40px;
   margin: 0;
-  border: 2px solid black;
+  background-color:$primary-main;
+  -webkit-box-shadow: 10px 9px 20px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 9px 20px -9px rgba(0,0,0,0.75);
+box-shadow: 10px 9px 20px -9px rgba(0,0,0,0.75);
 }
 
 .campaign-title {
   display: inline-block;
+  color: white;
+  font-family: $primary-font;
+  margin: 10px 10px 10px 25px;
 }
 
 .campaign-delete-button {
   float: right;
+  font-family: $primary-font;
+  color: white;
+  margin: 10px 10px 10px 25px;
+  cursor:pointer;
+
+}
+
+.campaign-nav-link {
+  float: right;
+  font-family: $primary-font;
+  color: white;
+  margin: 10px 10px 10px 25px;
+  cursor:pointer;
 }

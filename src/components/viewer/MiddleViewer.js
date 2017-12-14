@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Nav, NavItem} from 'react-bootstrap';
+import { Nav, NavItem} from 'react-bootstrap';
 import MonsterShow from './MonsterShow';
 import SpellShow from './SpellShow';
 import FeatureShow from './FeatureShow';
@@ -20,24 +20,14 @@ const MiddleViewer = ({
   equipment,
   sheet,
   handleAddSheetClick,
-  handleNewSheet,
   mainState,
-  handleHomeClick,
-  campaign,
-  handleCampEditClick,
-  handleDiceRoller
+  campaign
 }) => {
 
   return (
     <section>
       <div className="back-viewer">
-        <Nav bsStyle="tabs" justified>
-          <NavItem onClick={handleHomeClick}>Home</NavItem>
-          <NavItem onClick={handleCampEditClick}>Edit Campaign</NavItem>
-          <NavItem onClick={handleNewSheet}>New Character Sheet</NavItem>
-          <NavItem onClick={handleDiceRoller}>Dice Roller</NavItem>
 
-        </Nav>
         {
           mainState === 'newsheet'
             ? <SheetsNew/>
@@ -55,7 +45,8 @@ const MiddleViewer = ({
         }
       </div>
       <div className="sheet-viewer" style={{ display: isHidden ? 'none' : null }}>
-        <a href="#" onClick={handleExitClick}>X</a>
+        <div className="close-button-box" href="#" onClick={handleExitClick}><i className="fa fa-window-close" aria-hidden="true"></i>
+        </div>
         <div className="viewer-info-box">
           {
             searchState === 'monster'

@@ -1,5 +1,6 @@
 body {
-
+background-color:#3D423C;
+background-image:url(https://i.imgur.com/exqPs9B.jpg);
 }
 
 .leftsidepopout-box {
@@ -11,7 +12,7 @@ float: left;
 .middleviewer-box {
 width: 500px;
 float: left;
-margin: 50px;
+margin: 10px 50px;
 
 
 
@@ -33,26 +34,42 @@ margin: 50px;
 }
 .sheet-viewer {
 
-  overflow-y: scroll;
   width: 650px;
-  height: 500px;
-  background-image: url(https://i.imgur.com/VPxKv6I.jpg);
+  height: 100%;
+  background-color:$primary-black;
   -webkit-box-shadow: 10px 10px 47px -17px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 47px -17px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 47px -17px rgba(0,0,0,0.75);
 z-index: 10;
 position: relative;
+color:white;
+font-family: $primary-font;
+border-top: 2px solid white;
+border-bottom: 2px solid white;
+min-height: 500px;
+
 }
+
+
+
 
 .back-viewer {
   z-index: -1;
   position: absolute;
   width: 650px;
   height: 500px;
-  border: 2px solid black;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  background-color:$primary-black;
+
 }
 
 .sheets-new-form-box {
   margin: 10px;
   text-align: center;
+}
+
+.key-stat-box {
+  display: inline-block;
+  margin: 10px 10px 10px 0;
 }

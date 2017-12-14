@@ -3,7 +3,6 @@ import Axios from 'axios';
 import _ from 'lodash';
 import MonsterBox from './MonsterBox';
 import MonsterSearchBar from './MonsterSearchBar';
-import {Col, NavItem, Nav} from 'react-bootstrap';
 import SearchBar from '../searcher/SearchBar';
 import Spellbox from '../searcher/Spellbox';
 import FeaturesSearchBar from '../searcher/FeaturesSearchBar';
@@ -146,15 +145,18 @@ class SearchMain extends React.Component {
 
     return(
       <section>
-
-        <Nav bsStyle="pills" justified>
-          <NavItem onClick={this.props.handleSearchChange.bind(this, 'monster')}>Monsters</NavItem>
-          <NavItem onClick={this.props.handleSearchChange.bind(this, 'spell')}>Spells</NavItem>
-          <NavItem onClick={this.props.handleSearchChange.bind(this, 'feature')}>Features</NavItem>
-          <NavItem onClick={this.props.handleSearchChange.bind(this, 'equipment')}>Equipment</NavItem>
-          <NavItem onClick={this.props.handleSearchChange.bind(this, 'sheet')}>Sheets</NavItem>
-        </Nav>
-
+        <div className="search-mode-buttons">
+          <button className="btn" onClick={this.props.handleSearchChange.bind(this, 'monster')}>
+            <i className="fa fa-paw" aria-hidden="true"></i>  Monsters</button>
+          <button className="btn" onClick={this.props.handleSearchChange.bind(this, 'spell')}>
+            <i className="fa fa-bolt" aria-hidden="true"></i>  Spells</button>
+          <button className="btn" onClick={this.props.handleSearchChange.bind(this, 'feature')}>
+            <i className="fa fa-male" aria-hidden="true"></i>   Features</button>
+          <button className="btn" onClick={this.props.handleSearchChange.bind(this, 'equipment')}>
+            <i className="fa fa-shield" aria-hidden="true"></i>  Equipment</button>
+          <button className="btn" onClick={this.props.handleSearchChange.bind(this, 'sheet')}>
+            <i className="fa fa-id-card-o" aria-hidden="true"></i>  Sheets</button>
+        </div>
 
         {this.props.searchState === 'monster' &&
           <div className="search-main-box">

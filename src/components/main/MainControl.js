@@ -3,11 +3,12 @@ import Axios from 'axios';
 import RightSidePopOut from '../viewer/RightSidePopOut';
 import MiddleViewer from '../viewer/MiddleViewer';
 import LeftSidePopOut from '../viewer/LeftSidePopOut';
+import CampaignNavBar from '../navigation/CampaignNavBar';
 import Auth from '../../lib/Auth';
 
 class MainControl extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       monsters: [],
       monster: {name: 'NO MONSTERS'},
@@ -27,7 +28,7 @@ class MainControl extends React.Component {
       monsterInit: 1,
       campaign: {},
       monsterIdArr: [],
-      mainState: 'newsheet'
+      mainState: 'home'
     };
   }
 
@@ -63,6 +64,7 @@ class MainControl extends React.Component {
     };
 
     handleAddMonsterClick = () => {
+
       this.setState({
         monsterArr: [...this.state.monsterArr, this.state.monster],
         monsterIdArr: [...this.state.monsterIdArr, this.state.monster.id]
@@ -118,7 +120,14 @@ class MainControl extends React.Component {
     render(){
       return(
         <section>
-          <p>{this.state.campaign.name}</p>
+          <CampaignNavBar
+            campaign={this.props.campaign}
+            deleteCampaign={this.props.deleteCampaign}
+            handleHomeClick={this.handleHomeClick}
+            handleCampEditClick={this.handleCampEditClick}
+            handleNewSheet={this.handleNewSheet}
+            handleDiceRoller={this.handleDiceRoller}
+          />
           <div className="leftsidepopout-box">
             <LeftSidePopOut
               handleSearchClick={this.handleSearchClick}
@@ -138,11 +147,8 @@ class MainControl extends React.Component {
               equipment={this.state.equipment}
               sheet = {this.state.sheet}
               handleAddSheetClick={this.handleAddSheetClick}
-              handleNewSheet={this.handleNewSheet}
               mainState={this.state.mainState}
-              handleHomeClick={this.handleHomeClick}
               campaign={this.props.campaign}
-              handleCampEditClick={this.handleCampEditClick}
               handleDiceRoller={this.handleDiceRoller}
             />
           </div>

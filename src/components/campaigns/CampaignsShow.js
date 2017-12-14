@@ -49,12 +49,9 @@ class CampaignsShow extends React.Component {
     return(
       <main>
 
-        <CampaignNavBar campaign={this.state.campaign} deleteCampaign={this.deleteCampaign}/>
-        {/* { Auth.isAuthenticated() && <Link to={`/campaigns/${this.state.campaign.id}/edit`} className="edit-button"><button>Edit Name</button> */}
-        {/* </Link>} */}
-        <MainControl campaign={this.state.campaign} handleSaveBattle={this.handleSaveBattle}/>
-        {/* <LeftSearchPopOut/>
-        <RightSidePopOut players={this.state.players} monsterArr={this.state.monsterArr}/> */}
+
+        <MainControl campaign={this.state.campaign} deleteCampaign={this.deleteCampaign}/>
+
       </main>
     );
   }

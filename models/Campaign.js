@@ -7,7 +7,7 @@ const campaignSchema = new mongoose.Schema({
   monsters: [{type: mongoose.Schema.ObjectId, ref: 'Monster'}],
   character_sheets: [{type: mongoose.Schema.ObjectId, ref: 'Sheet'}],
   monster_last_initiative: Number,
-  createdBy: String
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });
