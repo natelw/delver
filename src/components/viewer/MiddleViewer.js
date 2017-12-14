@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import {Col, Nav, NavItem} from 'react-bootstrap';
 import MonsterShow from './MonsterShow';
 import SpellShow from './SpellShow';
 import FeatureShow from './FeatureShow';
@@ -28,10 +28,12 @@ const MiddleViewer = ({
   return (
     <section>
       <div className="back-viewer">
+        <Nav bsStyle="tabs" justified>
+          <NavItem onClick={handleHomeClick}>Home</NavItem>
+          <NavItem onClick={handleCampEditClick}>Edit Campaign</NavItem>
+          <NavItem onClick={handleNewSheet}>New Character Sheet</NavItem>
 
-        <button onClick={handleHomeClick}>Home</button>
-        <button onClick={handleCampEditClick}>Edit Campaign</button>
-        <button onClick={handleNewSheet}>New Character Sheet</button>
+        </Nav>
         {
           mainState === 'newsheet'
             ? <SheetsNew/>

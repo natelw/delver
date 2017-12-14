@@ -109,6 +109,7 @@ class MainControl extends React.Component {
     handleActiveReset = () => {
       this.setState({monsterArr: []});
       this.setState({monsterIdArr: []});
+      this.setState({players: []});
 
     }
 
