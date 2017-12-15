@@ -4,21 +4,21 @@ const EquipmentShow = ({ equipment }) => {
   return (
     <div>
       <h1>{equipment.name}</h1>
+      <hr/>
 
-
-      <h3>{equipment.equipment_category}</h3>
-      <h3>{equipment.weapon_category}</h3>
-      <h3>{equipment.tool_category}</h3>
-      <h3>{equipment.vehicle_category}</h3>
+      <p>{equipment.weapon_category}</p>
+      <p>{equipment.tool_category}</p>
+      <p>{equipment.vehicle_category}</p>
 
       {equipment.desc && equipment.desc.map((desc,i) =>
         <p key={'desc' + i}>{desc}</p>)}
 
       <p>{equipment.weapon_range}</p>
       <p>{equipment.category_range}</p>
-      <h3>{equipment.cost && equipment.cost.quantity + equipment.cost.unit}</h3>
+      <p>Weight: {equipment.weight} </p>
+      <hr/>
+      <div className="equip-cost-read-out"><h3>{equipment.cost && equipment.cost.quantity + equipment.cost.unit}</h3></div>
       <p>{equipment.damage_type && equipment.damage_type.name}</p>
-      <h3>Weight: {equipment.weight} </h3>
 
       {equipment.properties && equipment.properties.map((name,i) =>
         <p key={'properties' + i}>{name.name}</p>)}

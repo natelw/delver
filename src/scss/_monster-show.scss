@@ -2,14 +2,32 @@
   padding: 5px;
   margin: 2px;
   background-color:$primary-main;
-  width: 80px;
+  width: 90px;
   float: right;
+  height: 40px;
+  text-align: center;
 }
 
+.stat-read-out {
+  padding: 5px;
+display:inline-block;
+text-align: center;
+float: right;
+background-color: $primary-black;
+width: 30px;
+}
 .monster-statystats {
   float: right;
+  width: 100px;
+  height: 100%;
 }
 
 .top-stats-box {
 
+}
+
+.vertical-stats-box {
+  float: right;
+  width: 100px;
+  margin: 15px;
 }

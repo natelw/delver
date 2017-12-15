@@ -8,6 +8,7 @@ import SheetShow from './SheetShow';
 import SheetsNew from '../sheets/SheetsNew';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
 import DiceRoller from '../main/DiceRoller';
+import Home from './Home';
 
 const MiddleViewer = ({
   handleExitClick,
@@ -41,6 +42,11 @@ const MiddleViewer = ({
         {
           mainState === 'diceroller'
             ?  <DiceRoller />
+            : null
+        }
+        {
+          mainState === 'home'
+            ?  <Home />
             : null
         }
       </div>

@@ -1,0 +1,8 @@
+@import 'main';
+
+
+.campaign-list-box{
+@extend .sheet-viewer;
+margin: 0 auto;
+margin-top: 20px;
+}

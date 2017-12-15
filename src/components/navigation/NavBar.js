@@ -16,14 +16,9 @@ const NavBar = ({history}) => {
   return(
 
     <div className="main-nav-bar">
-      <img className="delver-logo" src="https://i.imgur.com/jkexCON.png" alt="Delver"/>
-      {/* { !Auth.isAuthenticated() && <Link href="/login" to="/login">
-        <div className="main-nav-link">Login</div></Link>}
-        { !Auth.isAuthenticated() && <NavItem componentClass={Link} href="/register" to="/register" active={location.pathname === '/register'}>Register</NavItem>}
-        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/campaigns" to="/campaigns" active={location.pathname === '/campaigns'}>Campaigns</NavItem>}
-        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/sheets/new" to="/sheets/new" active={location.pathname === '/sheets/new'}>New Sheet</NavItem>}
-        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/spells" to="/spells" active={location.pathname === '/spells'}>Search</NavItem>}
-        { Auth.isAuthenticated() && <NavItem componentClass={Link} href="/sheets" to="/sheets" active={location.pathname === '/sheets'}>Sheets</NavItem>} */}
+      <img className="delver-logo" src="https://i.imgur.com/UDI7zoe.png" alt="Delver"/>
+
+
       { !Auth.isAuthenticated() && <Link to="/register" className="nav-button">Register</Link>}
       {' '}
       { !Auth.isAuthenticated() && <Link to="/login" className="nav-button">Login</Link>}

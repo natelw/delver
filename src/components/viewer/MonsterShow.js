@@ -7,17 +7,17 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
         <i className="fa fa-heart" aria-hidden="true"></i>
       </div>
       <div className="vertical-stats-box">
-        <div className="stat-viewer-box">{'AC: ' + monster.armor_class}</div>
-        <div className="stat-viewer-box">{'HP: ' + monster.hit_points}</div>
-        <div className="stat-viewer-box">{'HD: ' + monster.hit_dice}</div>
-        <div className="stat-viewer-box">{'Str: ' + monster.strength}</div>
-        <div className="stat-viewer-box">{'Dex: ' + monster.dexterity}</div>
-        <div className="stat-viewer-box">{'Con: ' + monster.constitution}</div>
-        <div className="stat-viewer-box">{'Int: ' + monster.intelligence}</div>
-        <div className="stat-viewer-box">{'Wis: ' + monster.wisdom}</div>
-        <div className="stat-viewer-box">{'Cha: ' + monster.charisma}</div>
+        <div className="stat-viewer-box">AC:<div className="stat-read-out">{monster.armor_class}</div></div>
+        <div className="stat-viewer-box">HP:<div className="stat-read-out">{monster.hit_points}</div></div>
+        <div className="stat-viewer-box">Str:<div className="stat-read-out">{ monster.strength}</div></div>
+        <div className="stat-viewer-box">Dex:<div className="stat-read-out">{ monster.dexterity}</div></div>
+        <div className="stat-viewer-box">Con:<div className="stat-read-out">{ monster.constitution}</div></div>
+        <div className="stat-viewer-box">Int:<div className="stat-read-out">{ monster.intelligence}</div></div>
+        <div className="stat-viewer-box">Wis:<div className="stat-read-out">{ monster.wisdom}</div></div>
+        <div className="stat-viewer-box">Cha:<div className="stat-read-out">{ monster.charisma}</div></div>
       </div>
       <h1>{monster.name}</h1>
+      <hr/>
       <div className="monster-top-stats">
         <div className="key-stat-box">{monster.size}</div>
         <div className="key-stat-box">{monster.type}</div>
@@ -26,7 +26,7 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
       </div>
 
 
-      <hr/>
+
       <h3>{'Challenge Rating: ' + monster.challenge_rating}</h3>
       <div className="resistance-box">
         <p>{'Speed:' + monster.speed}</p>
@@ -68,6 +68,8 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
         <p>{monster.sleight_of_hand}</p>
         <p>{monster.stealth}</p>
         <p>{monster.survival}</p>
+        <div >{'Hit Dice: ' + monster.hit_dice}</div>
+
       </div>
 
     </div>
