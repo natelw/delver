@@ -1,5 +1,4 @@
 import React from 'react';
-import { Nav, NavItem} from 'react-bootstrap';
 import MonsterShow from './MonsterShow';
 import SpellShow from './SpellShow';
 import FeatureShow from './FeatureShow';

@@ -44,7 +44,7 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
 
       <div className="monster-saves-resists">
 
-        <p>{monster.strength_save}</p>
+        {/* <p>{monster.strength_save}</p>
         <p>{monster.dexterity_save}</p>
         <p>{monster.constitution_save}</p>
         <p>{monster.intelligence_save}</p>
@@ -67,7 +67,7 @@ const MonsterShow = ({ monster, handleAddMonsterClick }) => {
         <p>{monster.religion}</p>
         <p>{monster.sleight_of_hand}</p>
         <p>{monster.stealth}</p>
-        <p>{monster.survival}</p>
+        <p>{monster.survival}</p> */}
         <div >{'Hit Dice: ' + monster.hit_dice}</div>
 
       </div>

@@ -20,15 +20,19 @@ class CampaignsIndex extends React.Component {
       <main>
         <div className="campaign-list-box">
           <h1>Join a campaign</h1>
-          {this.state.campaigns && this.state.campaigns.map(campaign => {
-            return(
-              <Link key={campaign.id} to={`/campaigns/${campaign.id}`}>
-                <div className="single-campaign"><p>{campaign.name}</p></div>
-              </Link>
+          <div className="search-container">
+            {this.state.campaigns && this.state.campaigns.map(campaign => {
+              return(
+                <Link key={campaign.id} to={`/campaigns/${campaign.id}`}>
+                  <div className="databox-single"><div className="single-text">{campaign.name}</div></div>
+                </Link>
 
-            );
-          }
-          )}
+              );
+            }
+            )}
+          </div>
+          <hr/>
+          <Link to="/campaigns/new"><div className="btn">Create</div></Link>
         </div>
       </main>
     );

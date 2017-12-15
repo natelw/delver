@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchMain from '../searcher/SearchMain';
-import {Col} from 'react-bootstrap';
 class LeftSidePopOut extends React.Component {
   state = {
 
