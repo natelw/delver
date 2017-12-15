@@ -16,7 +16,7 @@ const NavBar = ({history}) => {
   return(
 
     <div className="main-nav-bar">
-      <img className="delver-logo" src="https://i.imgur.com/UDI7zoe.png" alt="Delver"/>
+      <Link to="/" href="#"><img className="delver-logo" src="https://i.imgur.com/UDI7zoe.png" alt="Delver"/></Link>
 
 
       { !Auth.isAuthenticated() && <Link to="/register" className="nav-button">Register</Link>}

@@ -44,7 +44,7 @@ const RegForm = ({ handleChange, handleSubmit, user }) => {
         />
       </div>
 
-      <button className="reg-button">Login</button>
+      <button className="btn">Login</button>
     </form>
   );
 };

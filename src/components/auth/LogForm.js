@@ -27,15 +27,18 @@ class Register extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token);
         console.log(this.props.history);
-        this.props.history.push('/');
+        this.props.history.push('/campaigns');
       })
       .catch(err => console.log(err));
   }
 
   render() {
     return (
-      <div>
+      <div className="login-box">
+        <img className="delver-home-logo" src="https://i.imgur.com/UDI7zoe.png" alt="Delver"/>
+        <hr/>
         <h3>Log in</h3>
+        <hr/>
         <RegForm
           user={this.state.user}
           handleChange={this.handleChange}
