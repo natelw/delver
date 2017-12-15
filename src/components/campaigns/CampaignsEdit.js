@@ -39,6 +39,7 @@ handleSubmit = (e) => {
 render(){
   return(
     <main>
+      <div className="campaign-list-box">
       <h1>Edit Campaign</h1>
       <CampaignsForm
         history={this.props.history}
@@ -46,6 +47,7 @@ render(){
         handleChange={this.handleChange}
         campaign={this.state.campaign}
       />
+    </div>
     </main>
   );
 }

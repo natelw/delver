@@ -23,7 +23,7 @@ state = {
 
   render() {
     return (
-      <div>
+      <div className="campaign-list-box">
         <h1>New Campaign</h1>
         <CampaignsForm
           handleSubmit={this.handleSubmit}

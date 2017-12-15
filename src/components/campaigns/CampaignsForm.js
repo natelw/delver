@@ -14,7 +14,7 @@ const CampaignsForm = ({ handleChange, handleSubmit, campaign }) => {
         />
       </div>
 
-      <button className="done-button">Done</button>
+      <button className="btn">Done</button>
     </form>
   );
 };
