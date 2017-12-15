@@ -103,18 +103,18 @@ class MainControl extends React.Component {
     }
 
     handleNewSheet =() => {
-      this.setState({mainState: 'newsheet'});
+      this.setState({mainState: 'newsheet', isHidden: 'none'});
     }
 
     handleHomeClick = () => {
-      this.setState({mainState: 'home'});
+      this.setState({mainState: 'home', isHidden: 'none'});
     }
 
     handleCampEditClick = () => {
-      this.setState({mainState: 'campaignedit'});
+      this.setState({mainState: 'campaignedit', isHidden: 'none'});
     }
     handleDiceRoller = () => {
-      this.setState({mainState: 'diceroller'});
+      this.setState({mainState: 'diceroller', isHidden: 'none'});
     }
     handleEditSheetClick = () => {
       this.setState({mainState: 'editsheet',isHidden: 'none'});
