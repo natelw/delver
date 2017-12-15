@@ -1,11 +1,13 @@
 import React from 'react';
 
 
-const SheetShow = ({ sheet, handleAddSheetClick}) => {
+const SheetShow = ({ sheet, handleAddSheetClick, handleEditSheetClick}) => {
   return (
     <main>
       <div className="favourite-button"  onClick={handleAddSheetClick}>
-        <i className="fa fa-heart" aria-hidden="true"></i>
+        <i className="fa fa-heart" aria-hidden="true"></i></div>
+      <div className="edit-button" onClick={handleEditSheetClick}><i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+
       </div>
       <div className="vertical-stats-box">
         <div className="stat-viewer-box">HP: <div className="stat-read-out">{sheet.MaxHp}</div></div>

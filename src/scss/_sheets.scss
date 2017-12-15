@@ -1,0 +1,51 @@
+@import 'campaign-list';
+@import 'main';
+
+.new-sheet-box {
+@extend .campaign-list-box;
+overflow-y: scroll;
+color: white;
+}
+
+.whole-form{
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+.character-sheet-divider {
+float: left;
+width:200px;
+margin: 0 auto;
+color: white;
+}
+
+.character-sheet-divider-right {
+  float: right;
+  width: 200px;
+}
+
+.former {
+background-color: grey;
+}
+
+label{
+  color: white;
+}
+
+.new-sheet-submit-box{
+  width: 200px;
+  margin: 0 auto;
+  display:block;
+
+}
+
+.whole-form-box {
+  display:block;
+}
+
+.edit-title {
+  
+  font-family: $primary-font;
+  color: white;
+}

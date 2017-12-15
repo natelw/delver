@@ -24,7 +24,7 @@ state = {
 
   render() {
     return (
-      <div className='sheets-new-form-box'>
+      <div className="new-sheet-box">
         <h3>New Character Sheet</h3>
         <SheetsForm
           handleSubmit={this.handleSubmit}

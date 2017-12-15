@@ -13,12 +13,12 @@ class SheetsEdit extends React.Component{
   render(){
     return(
       <main>
-        <h1>Edit Sheet</h1>
+        <div className="edit-title">Edit Sheet</div>
         <SheetsForm
           history={this.props.history}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
-          sheet={this.state.sheet}
+          sheet={this.props.sheet}
         />
       </main>
     );
@@ -26,7 +26,7 @@ class SheetsEdit extends React.Component{
 
   componentDidMount() {
     Axios
-      .get(`/api/sheets/${this.props.match.params.id}`)
+      .get(`/api/sheets/${this.props.sheet.id}`)
       .then(res => this.setState({ sheet: res.data }))
       .catch(err => console.log(err));
   }
@@ -40,7 +40,7 @@ handleSubmit = (e) => {
   e.preventDefault();
 
   Axios
-    .put(`/api/sheets/${this.props.match.params.id}`, this.state.sheet, {
+    .put(`/api/sheets/${this.props.sheet.id}`, this.state.sheet, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
     })
     .then(res => this.props.history.push(`/sheets/${res.data.id}`))

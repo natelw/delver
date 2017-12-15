@@ -8,6 +8,7 @@ import SheetsNew from '../sheets/SheetsNew';
 import CampaignsEdit from '../campaigns/CampaignsEdit';
 import DiceRoller from '../main/DiceRoller';
 import Home from './Home';
+import SheetsEdit from '../sheets/SheetsEdit';
 
 const MiddleViewer = ({
   handleExitClick,
@@ -21,13 +22,18 @@ const MiddleViewer = ({
   sheet,
   handleAddSheetClick,
   mainState,
-  campaign
+  campaign,
+  handleEditSheetClick
 }) => {
 
   return (
     <section>
       <div className="back-viewer">
-
+        {
+          mainState === 'editsheet'
+            ? <SheetsEdit sheet={sheet} handleEditSheetClick={handleEditSheetClick}/>
+            : null
+        }
         {
           mainState === 'newsheet'
             ? <SheetsNew/>
@@ -75,7 +81,7 @@ const MiddleViewer = ({
           }
           {
             searchState === 'sheet'
-              ? <SheetShow sheet={sheet} handleAddSheetClick={handleAddSheetClick}/>
+              ? <SheetShow sheet={sheet} handleAddSheetClick={handleAddSheetClick} handleEditSheetClick={handleEditSheetClick}/>
               : null
           }
         </div>
