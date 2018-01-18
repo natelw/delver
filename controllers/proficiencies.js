@@ -1,4 +1,4 @@
-const Proficiency = require('../models/Proficiency');
+const Proficiency = require('../models/proficiency');
 
 function proficienciesIndex(req, res, next){
   Proficiency

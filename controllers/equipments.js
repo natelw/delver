@@ -1,4 +1,4 @@
-const Equipment = require('../models/Equipment');
+const Equipment = require('../models/equipment');
 
 function equipmentsIndex(req, res, next){
   Equipment

@@ -1,4 +1,4 @@
-const Monster = require('../models/Monster');
+const Monster = require('../models/monster');
 
 function monstersIndex(req, res, next){
   Monster

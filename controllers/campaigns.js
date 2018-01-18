@@ -1,4 +1,4 @@
-const Campaign = require('../models/Campaign');
+const Campaign = require('../models/campaign');
 
 function campaignsIndex(req, res, next){
   Campaign

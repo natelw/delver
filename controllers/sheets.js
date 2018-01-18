@@ -1,4 +1,4 @@
-const Sheet = require('../models/Sheet');
+const Sheet = require('../models/sheet');
 
 function sheetsIndex(req, res, next){
   Sheet

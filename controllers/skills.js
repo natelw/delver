@@ -1,4 +1,4 @@
-const Skill = require('../models/Skill');
+const Skill = require('../models/skill');
 
 function skillsIndex(req, res, next){
   Skill
