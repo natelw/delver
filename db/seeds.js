@@ -3,13 +3,13 @@ const Promise = require('bluebird');
 mongoose.Promise = Promise;
 const rp = require('request-promise');
 const { dbURI } = require('../config/environment');
-const Proficiency = require('../models/Proficiency');
-const Spell = require('../models/Spell');
-const Monster = require('../models/Monster');
-const Feature = require('../models/Feature');
-const Equipment = require('../models/Equipment');
-const Skill = require('../models/Skill');
-const User = require('../models/User');
+const Proficiency = require('../models/proficiency');
+const Spell = require('../models/spell');
+const Monster = require('../models/monster');
+const Feature = require('../models/feature');
+const Equipment = require('../models/equipment');
+const Skill = require('../models/skill');
+const User = require('../models/user');
 
 
 const userData = [{
